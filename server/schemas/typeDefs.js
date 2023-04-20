@@ -2,53 +2,53 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type Worker {
-    id: ID!
+    _id: ID!
     name: String!
     role: String
   }
 
   type Material {
-    id: ID!
+    _id: ID!
     name: String!
     quantity: Int!
     location: String
   }
 
   type Equipment {
-    id: ID!
+    _id: ID!
     name: String!
     hours: Float
     issues: String
   }
 
   type Weather {
-    id: ID!
+    _id: ID!
     temperature: Float
     windSpeed: Float
     precipitation: String
   }
 
   type Delay {
-    id: ID!
+    _id: ID!
     reason: String!
     mitigation: String
   }
 
   type SafetyIncident {
-    id: ID!
+    _id: ID!
     nature: String!
     injuries: String
   }
 
   type Communication {
-    id: ID!
+    _id: ID!
     type: String!
     date: String!
     details: String
   }
 
   type DailyLog {
-    id: ID!
+    _id: ID!
     date: String!
     project: Project!
     workCompleted: [Worker]
@@ -61,7 +61,7 @@ const typeDefs = gql`
   }
 
   type User {
-    id: ID!
+    _id: ID!
     name: String!
     email: String!
     role: String
@@ -69,14 +69,14 @@ const typeDefs = gql`
   }
 
   type Company {
-    id: ID!
+    _id: ID!
     name: String!
     users: [User]
     projects: [Project]
   }
 
   type Project {
-    id: ID!
+    _id: ID!
     name: String!
     company: Company!
     dailyLogs: [DailyLog]
@@ -84,35 +84,35 @@ const typeDefs = gql`
 
   type Query {
     projects: [Project]
-    project(id: ID!): Project
+    project(_id: ID!): Project
     users: [User]
-    user(id: ID!): User
+    user(_id: ID!): User
     dailyLogs(projectId: ID!): [DailyLog]
-    dailyLog(id: ID!): DailyLog
+    dailyLog(_id: ID!): DailyLog
     companies: [Company]
-    company(id: ID!): Company
+    company(_id: ID!): Company
   }
 
   type Mutation {
     # User mutations
     createUser(name: String!, email: String!, role: String, companyId: ID!): User
-    updateUser(id: ID!, name: String, email: String, role: String, companyId: ID): User
-    deleteUser(id: ID!): User
+    updateUser(_id: ID!, name: String, email: String, role: String, companyId: ID): User
+    deleteUser(_id: ID!): User
 
     # Company mutations
     createCompany(name: String!): Company
-    updateCompany(id: ID!, name: String): Company
-    deleteCompany(id: ID!): Company
+    updateCompany(_id: ID!, name: String): Company
+    deleteCompany(_id: ID!): Company
 
     # Project mutations
     createProject(name: String!, companyId: ID!): Project
-    updateProject(id: ID!, name: String, companyId: ID): Project
-    deleteProject(id: ID!): Project
+    updateProject(_id: ID!, name: String, companyId: ID): Project
+    deleteProject(_id: ID!): Project
 
     # DailyLog mutations
     createDailyLog(projectId: ID!, date: String!): DailyLog
-    updateDailyLog(id: ID!, date: String): DailyLog
-    deleteDailyLog(id: ID!): DailyLog
+    updateDailyLog(_id: ID!, date: String): DailyLog
+    deleteDailyLog(_id: ID!): DailyLog
 
     # Add mutations for the other types (e.g., Worker, Material, Equipment, etc.) as needed
   }
