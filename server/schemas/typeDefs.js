@@ -94,7 +94,27 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    # Add mutations here
+    # User mutations
+    createUser(name: String!, email: String!, role: String, companyId: ID!): User
+    updateUser(id: ID!, name: String, email: String, role: String, companyId: ID): User
+    deleteUser(id: ID!): User
+
+    # Company mutations
+    createCompany(name: String!): Company
+    updateCompany(id: ID!, name: String): Company
+    deleteCompany(id: ID!): Company
+
+    # Project mutations
+    createProject(name: String!, companyId: ID!): Project
+    updateProject(id: ID!, name: String, companyId: ID): Project
+    deleteProject(id: ID!): Project
+
+    # DailyLog mutations
+    createDailyLog(projectId: ID!, date: String!): DailyLog
+    updateDailyLog(id: ID!, date: String): DailyLog
+    deleteDailyLog(id: ID!): DailyLog
+
+    # Add mutations for the other types (e.g., Worker, Material, Equipment, etc.) as needed
   }
 `;
 
