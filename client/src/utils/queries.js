@@ -49,24 +49,39 @@ export const DAILY_LOGS_QUERY = gql`
       }
     }
   }
-  query GetMe {
-    me {
+
+`;
+
+export const PROJECTS_QUERY = gql`
+  query GetProjects($companyId: ID!) {
+    projects(companyId: $companyId) {
       _id
       name
-      email
-      role
       company {
         _id
         name
-        projects {
-          _id
-          name
-        }
       }
     }
   }
-  
-  
+`;
+
+export const QUERY_ME = gql`
+query GetMe {
+  me {
+    _id
+    name
+    email
+    role
+    company {
+      _id
+      name
+      projects {
+        _id
+        name
+      }
+    }
+  }
+}
 `;
 
 
