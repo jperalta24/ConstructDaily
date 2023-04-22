@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-// Import any other necessary components or helper functions here
 
 const DailyLogForm = ({ onSubmit, project }) => {
   const [formData, setFormData] = useState({
-    // Initialize form data with empty or default values
     workCompleted: '',
     materialsUsed: '',
     equipmentUsed: '',
@@ -25,7 +23,6 @@ const DailyLogForm = ({ onSubmit, project }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {/* Render form fields for each piece of information */}
       {/* Work completed */}
       <input
         type="text"
@@ -35,8 +32,53 @@ const DailyLogForm = ({ onSubmit, project }) => {
         placeholder="Work completed"
       />
       {/* Materials used */}
-      {/* Render other form fields similarly */}
-      {/* ... */}
+      <input
+        type="text"
+        name="materialsUsed"
+        value={formData.materialsUsed}
+        onChange={handleChange}
+        placeholder="Materials used"
+      />
+      {/* Equipment used */}
+      <input
+        type="text"
+        name="equipmentUsed"
+        value={formData.equipmentUsed}
+        onChange={handleChange}
+        placeholder="Equipment used"
+      />
+      {/* Weather conditions */}
+      <input
+        type="text"
+        name="weatherConditions"
+        value={formData.weatherConditions}
+        onChange={handleChange}
+        placeholder="Weather conditions"
+      />
+      {/* Delays */}
+      <input
+        type="text"
+        name="delays"
+        value={formData.delays}
+        onChange={handleChange}
+        placeholder="Delays"
+      />
+      {/* Safety incidents */}
+      <input
+        type="text"
+        name="safetyIncidents"
+        value={formData.safetyIncidents}
+        onChange={handleChange}
+        placeholder="Safety incidents"
+      />
+      {/* Communications */}
+      <input
+        type="text"
+        name="communications"
+        value={formData.communications}
+        onChange={handleChange}
+        placeholder="Communications"
+      />
       {/* Submit button */}
       <button type="submit">Save Daily Log</button>
     </form>

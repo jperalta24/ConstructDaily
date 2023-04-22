@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import DailyLogItem from './DailyLogItem';
-import {DAILY_LOGS_QUERY} from '../../utils/queries'
-// Import the necessary GraphQL query here
+import {DAILY_LOGS_QUERY} from '../../utils/queries';
 
 const DailyLogList = ({ projectId }) => {
   const [dailyLogs, setDailyLogs] = useState([]);
@@ -24,7 +23,7 @@ const DailyLogList = ({ projectId }) => {
       <h2>Daily Logs</h2>
       {dailyLogs.length ? (
         dailyLogs.map((dailyLog) => (
-          <DailyLogItem key={dailyLog.id} dailyLog={dailyLog} />
+          <DailyLogItem key={dailyLog._id} dailyLog={dailyLog} />
         ))
       ) : (
         <p>No daily logs found.</p>
@@ -34,6 +33,7 @@ const DailyLogList = ({ projectId }) => {
 };
 
 export default DailyLogList;
+
 
 
 // Your DailyLogList.js will be a React component responsible for fetching and displaying a list of daily log entries. It will call an API (using GraphQL queries, for example) to fetch daily log data and render a DailyLogItem component for each entry in the list. Here's a basic example of what the DailyLogList.js component could look like:

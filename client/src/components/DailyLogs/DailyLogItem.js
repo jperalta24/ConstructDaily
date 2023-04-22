@@ -1,12 +1,11 @@
 import React from 'react';
-// Import any other necessary components or helper functions here
 
 const DailyLogItem = ({ dailyLog }) => {
   const {
     workCompleted,
     materialsUsed,
     equipmentUsed,
-    weatherConditions,
+    weather,
     delays,
     safetyIncidents,
     communications,
@@ -16,18 +15,53 @@ const DailyLogItem = ({ dailyLog }) => {
     <div className="daily-log-item">
       <h3>{dailyLog.date}</h3>
       <h4>Work Completed:</h4>
-      <p>{workCompleted}</p>
+      <ul>
+        {workCompleted.map((item, index) => (
+          <li key={index}>{item.workerName}: {item.taskDescription} ({item.hoursWorked} hours)</li>
+        ))}
+      </ul>
       <h4>Materials Used:</h4>
-      <p>{materialsUsed}</p>
+      <ul>
+        {materialsUsed.map((item, index) => (
+          <li key={index}>{item.materialName} ({item.quantity})</li>
+        ))}
+      </ul>
       <h4>Equipment Used:</h4>
-      <p>{equipmentUsed}</p>
-      {/* Render other daily log details similarly */}
-      {/* ... */}
+      <ul>
+        {equipmentUsed.map((item, index) => (
+          <li key={index}>{item.equipmentName} ({item.hoursUsed} hours)</li>
+        ))}
+      </ul>
+      <h4>Weather Conditions:</h4>
+      <p>
+        Temperature: {weather.temperature}°F, Conditions: {weather.conditions}
+      </p>
+      <h4>Delays:</h4>
+      <ul>
+        {delays.map((item, index) => (
+          <li key={index}>{item.description} (Duration: {item.duration} hours)</li>
+        ))}
+      </ul>
+      <h4>Safety Incidents:</h4>
+      <ul>
+        {safetyIncidents.map((item, index) => (
+          <li key={index}>{item.description} (Severity: {item.severity})</li>
+        ))}
+      </ul>
+      <h4>Communications:</h4>
+      <ul>
+        {communications.map((item, index) => (
+          <li key={index}>{item.messageType}: {item.messageContent}</li>
+        ))}
+      </ul>
     </div>
   );
 };
 
 export default DailyLogItem;
+
+
+
 
 // Your DailyLogItem.js will be a React component responsible for displaying individual daily log entries. This component will receive a daily log object as a prop and render its details, such as work completed, materials used, equipment used, weather conditions, delays, safety incidents, and communications. Here's a basic example of what the DailyLogItem.js component could look like:
 
