@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/jperalta24/ConstructDaily/issues"
   },
-  "homepage": "https://github.com/jperalta24/ConstructDaily#readme"
+  "homepage": "https://github.com/jperalta24/ConstructDaily#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
 }
