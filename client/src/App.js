@@ -9,6 +9,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 //import pages todo
+import MyNav from './components/Navigation/Nav';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -31,10 +32,13 @@ const client = new ApolloClient({
 
 function App() {
   return (
+    <ApolloProvider client={client}>
     <div className="App">
       <header className="App-header">
+        <MyNav/>
       </header>
     </div>
+    </ApolloProvider>
   );
 }
 

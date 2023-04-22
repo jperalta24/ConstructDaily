@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
+import  RegisterForm from '../Users/RegisterForm'
+import LoginForm from '../Users/LoginForm';
 
-const Nav = () => { console.log }
+// import Auth from '../../utils/auth';
 
-export default Nav;
+const MyNav = () => {
+  console.log('hello world ')
+}
+
+export default MyNav;

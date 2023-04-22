@@ -1,88 +1,78 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-  type Worker {
-    _id: ID!
-    name: String!
-    role: String
-  }
+type DailyLog {
+  _id: ID!
+  date: String!
+  project: Project!
+  workCompleted: [WorkCompleted]
+  materialsUsed: [MaterialsUsed]
+  equipmentUsed: [EquipmentUsed]
+  weather: Weather
+  delays: [Delay]
+  safetyIncidents: [SafetyIncident]
+  communications: [Communication]
+}
 
-  type Material {
-    _id: ID!
-    name: String!
-    quantity: Int!
-    location: String
-  }
+type WorkCompleted {
+  workerName: String
+  taskDescription: String
+  hoursWorked: Number
+}
 
-  type Equipment {
-    _id: ID!
-    name: String!
-    hours: Float
-    issues: String
-  }
+type MaterialsUsed {
+  materialName: String
+  quantity: Number
+}
 
-  type Weather {
-    _id: ID!
-    temperature: Float
-    windSpeed: Float
-    precipitation: String
-  }
+type EquipmentUsed {
+  equipmentName: String
+  hoursUsed: Number
+}
 
-  type Delay {
-    _id: ID!
-    reason: String!
-    mitigation: String
-  }
+type Weather {
+  temperature: Number
+  conditions: String
+}
 
-  type SafetyIncident {
-    _id: ID!
-    nature: String!
-    injuries: String
-  }
+type Delay {
+  description: String
+  duration: Number
+}
 
-  type Communication {
-    _id: ID!
-    type: String!
-    date: String!
-    details: String
-  }
+type SafetyIncident {
+  description: String
+  severity: String
+}
 
-  type DailyLog {
-    _id: ID!
-    date: String!
-    project: Project!
-    workCompleted: [Worker]
-    materialsUsed: [Material]
-    equipmentUsed: [Equipment]
-    weather: Weather
-    delays: [Delay]
-    safetyIncidents: [SafetyIncident]
-    communications: [Communication]
-  }
+type Communication {
+  messageType: String
+  messageContent: String
+}
 
-  type User {
+type User {
     _id: ID!
     name: String!
     email: String!
     role: String
     company: Company!
-  }
+}
 
-  type Company {
+type Company {
     _id: ID!
     name: String!
     users: [User]
     projects: [Project]
-  }
+}
 
-  type Project {
+type Project {
     _id: ID!
     name: String!
     company: Company!
     dailyLogs: [DailyLog]
-  }
+}
 
-  type Query {
+type Query {
     projects: [Project]
     project(_id: ID!): Project
     users: [User]
@@ -91,31 +81,69 @@ const typeDefs = gql`
     dailyLog(_id: ID!): DailyLog
     companies: [Company]
     company(_id: ID!): Company
+    me: User
   }
 
-  type Mutation {
-    # User mutations
+type Mutation {
     createUser(name: String!, email: String!, role: String, companyId: ID!): User
     updateUser(_id: ID!, name: String, email: String, role: String, companyId: ID): User
     deleteUser(_id: ID!): User
-
-    # Company mutations
     createCompany(name: String!): Company
     updateCompany(_id: ID!, name: String): Company
     deleteCompany(_id: ID!): Company
-
-    # Project mutations
     createProject(name: String!, companyId: ID!): Project
     updateProject(_id: ID!, name: String, companyId: ID): Project
     deleteProject(_id: ID!): Project
-
-    # DailyLog mutations
     createDailyLog(projectId: ID!, date: String!): DailyLog
     updateDailyLog(_id: ID!, date: String): DailyLog
     deleteDailyLog(_id: ID!): DailyLog
-
-    # Add mutations for the other types (e.g., Worker, Material, Equipment, etc.) as needed
+    signIn(email: String!, password: String!): Auth
+    createDailyLog(projectId: ID!, date: String!, workCompleted: [WorkCompletedInput], materialsUsed: [MaterialsUsedInput], equipmentUsed: [EquipmentUsedInput], weather: WeatherInput, delays: [DelayInput], safetyIncidents: [SafetyIncidentInput], communications: [CommunicationInput]): DailyLog
+    updateDailyLog(_id: ID!, date: String, workCompleted: [WorkCompletedInput], materialsUsed: [MaterialsUsedInput], equipmentUsed: [EquipmentUsedInput], weather: WeatherInput, delays: [DelayInput], safetyIncidents: [SafetyIncidentInput], communications: [CommunicationInput]): DailyLog
+    input WorkCompletedInput {
+      workerName: String
+      taskDescription: String
+      hoursWorked: Number
+    }
+  
+    input MaterialsUsedInput {
+      materialName: String
+      quantity: Number
+    }
+  
+    input EquipmentUsedInput {
+      equipmentName: String
+      hoursUsed: Number
+    }
+  
+    input WeatherInput {
+      temperature: Number
+      conditions: String
+    }
+  
+    input DelayInput {
+      description: String
+      duration: Number
+    }
+  
+    input SafetyIncidentInput {
+      description: String
+      severity: String
+    }
+  
+    input CommunicationInput {
+      messageType: String
+      messageContent: String
+    }
   }
-`;
+
+  }
+
+  type Auth {
+    token: String
+    user: User
+  }
+  `;
+// # Add mutations for the other types (e.g., Worker, Material, Equipment, etc.) as needed
 
 module.exports = typeDefs;

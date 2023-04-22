@@ -3,50 +3,72 @@ import { gql } from '@apollo/client';
 export const DAILY_LOGS_QUERY = gql`
   query GetDailyLogs($projectId: ID!) {
     dailyLogs(projectId: $projectId) {
-      id
+      _id
       date
       workCompleted {
-        id
-        name
-        role
+        worker {
+          _id
+          name
+          role
+        }
+        hours
       }
       materialsUsed {
-        id
-        name
+        material {
+          _id
+          name
+        }
         quantity
         location
       }
       equipmentUsed {
-        id
-        name
+        equipment {
+          _id
+          name
+        }
         hours
         issues
       }
       weather {
-        id
         temperature
         windSpeed
         precipitation
       }
       delays {
-        id
         reason
         mitigation
       }
       safetyIncidents {
-        id
         nature
         injuries
       }
       communications {
-        id
         type
         date
         details
       }
     }
   }
+  query GetMe {
+    me {
+      _id
+      name
+      email
+      role
+      company {
+        _id
+        name
+        projects {
+          _id
+          name
+        }
+      }
+    }
+  }
+  
+  
 `;
+
 
 
 
