@@ -8,9 +8,9 @@ import React, { useState } from 'react';
 // } from 'react-bootstrap';
 // will use later for finaly JSX
 
-import { LoginForm } from '../components/Users/LoginForm';
-import { RegisterForm } from '../components/Users/RegisterForm';
-import { UserProfile } from '../components/Users/UserProfile';
+import LoginForm from '../components/Users/LoginForm';
+import RegisterForm from '../components/Users/RegisterForm';
+import UserProfile from '../components/Users/UserProfile';
 // import {}
 
 const HomePage = () => {

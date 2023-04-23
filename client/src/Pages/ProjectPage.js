@@ -7,15 +7,16 @@ import React, { useState } from 'react';
 //   Col
 // } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
-import { GET_PROJECTS } from '../../utils/queries';
+import { PROJECTS_QUERY } from '../utils/queries';
 // import ProjectItem from '../components/Projects/ProjectItem';
-import ProjectForm from '../components/Projects';
-import ProjectList from '../components/Projects/ProjectList';
+// import ProjectForm from '../components/Projects';
+// import ProjectList from '../components/Projects/ProjectList';
+import { ProjectForm, ProjectList } from '../components/Projects'
 
 const ProjectPage = ({ companyId }) => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [showForm, setShowForm] = useState(false);
-  const { loading, error, data } = useQuery(GET_PROJECTS, { variables: { companyId } });
+  const { loading, error, data } = useQuery(PROJECTS_QUERY, { variables: { companyId } });
 
   const handleEdit = (project) => {
     setSelectedProject(project);
