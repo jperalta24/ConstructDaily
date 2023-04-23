@@ -17,27 +17,27 @@ type DailyLog {
 type WorkCompleted {
   workerName: String
   taskDescription: String
-  hoursWorked: Number
+  hoursWorked: Int
 }
 
 type MaterialsUsed {
   materialName: String
-  quantity: Number
+  quantity: Int
 }
 
 type EquipmentUsed {
   equipmentName: String
-  hoursUsed: Number
+  hoursUsed: Int
 }
 
 type Weather {
-  temperature: Number
+  temperature: Int
   conditions: String
 }
 
 type Delay {
   description: String
-  duration: Number
+  duration: Int
 }
 
 type SafetyIncident {
@@ -85,59 +85,55 @@ type Query {
   }
 
 type Mutation {
-    createUser(name: String!, email: String!, role: String, companyId: ID!): User
-    updateUser(_id: ID!, name: String, email: String, role: String, companyId: ID): User
-    deleteUser(_id: ID!): User
-    createCompany(name: String!): Company
-    updateCompany(_id: ID!, name: String): Company
-    deleteCompany(_id: ID!): Company
-    createProject(name: String!, companyId: ID!): Project
-    updateProject(_id: ID!, name: String, companyId: ID): Project
-    deleteProject(_id: ID!): Project
-    createDailyLog(projectId: ID!, date: String!): DailyLog
-    updateDailyLog(_id: ID!, date: String): DailyLog
-    deleteDailyLog(_id: ID!): DailyLog
-    signIn(email: String!, password: String!): Auth
-    createDailyLog(projectId: ID!, date: String!, workCompleted: [WorkCompletedInput], materialsUsed: [MaterialsUsedInput], equipmentUsed: [EquipmentUsedInput], weather: WeatherInput, delays: [DelayInput], safetyIncidents: [SafetyIncidentInput], communications: [CommunicationInput]): DailyLog
-    updateDailyLog(_id: ID!, date: String, workCompleted: [WorkCompletedInput], materialsUsed: [MaterialsUsedInput], equipmentUsed: [EquipmentUsedInput], weather: WeatherInput, delays: [DelayInput], safetyIncidents: [SafetyIncidentInput], communications: [CommunicationInput]): DailyLog
+  createUser(name: String!, email: String!, role: String, companyId: ID!): User
+  updateUser(_id: ID!, name: String, email: String, role: String, companyId: ID): User
+  deleteUser(_id: ID!): User
+  createCompany(name: String!): Company
+  updateCompany(_id: ID!, name: String): Company
+  deleteCompany(_id: ID!): Company
+  createProject(name: String!, companyId: ID!): Project
+  updateProject(_id: ID!, name: String, companyId: ID): Project
+  deleteProject(_id: ID!): Project
+  createDailyLog(projectId: ID!, date: String!, workCompleted: [WorkCompletedInput], materialsUsed: [MaterialsUsedInput], equipmentUsed: [EquipmentUsedInput], weather: WeatherInput, delays: [DelayInput], safetyIncidents: [SafetyIncidentInput], communications: [CommunicationInput]): DailyLog
+  updateDailyLog(_id: ID!, date: String, workCompleted: [WorkCompletedInput], materialsUsed: [MaterialsUsedInput], equipmentUsed: [EquipmentUsedInput], weather: WeatherInput, delays: [DelayInput], safetyIncidents: [SafetyIncidentInput], communications: [CommunicationInput]): DailyLog
+  deleteDailyLog(_id: ID!): DailyLog
+  signIn(email: String!, password: String!): Auth
+    }
     input WorkCompletedInput {
       workerName: String
       taskDescription: String
-      hoursWorked: Number
+      hoursWorked: Int
     }
-  
+    
     input MaterialsUsedInput {
       materialName: String
-      quantity: Number
+      quantity: Int
     }
-  
+    
     input EquipmentUsedInput {
       equipmentName: String
-      hoursUsed: Number
+      hoursUsed: Int
     }
-  
+    
     input WeatherInput {
-      temperature: Number
+      temperature: Float
       conditions: String
     }
-  
+    
     input DelayInput {
       description: String
-      duration: Number
+      duration: Int
     }
-  
+    
     input SafetyIncidentInput {
       description: String
       severity: String
     }
-  
+    
     input CommunicationInput {
       messageType: String
       messageContent: String
     }
-  }
-
-  }
 
   type Auth {
     token: String

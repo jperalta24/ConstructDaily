@@ -11,7 +11,6 @@ const Company = require("./Company");
 const Project = require("./Project");
 
 module.exports = {
-  Worker,
   DailyLog,
   User,
   Company,
