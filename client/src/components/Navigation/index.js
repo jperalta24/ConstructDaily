@@ -1,1 +1,1 @@
-export { default as Nav } from './Nav';
+export { default as MyNav } from './Nav';
