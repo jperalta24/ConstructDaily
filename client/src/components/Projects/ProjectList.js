@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
-import { GET_PROJECTS } from '../../utils/queries';
+import { PROJECTS_QUERY } from '../../utils/queries';
 import ProjectItem from './ProjectItem';
 import ProjectForm from './ProjectForm';
 
 const ProjectList = ({ companyId }) => {
-  const { loading, error, data, refetch } = useQuery(GET_PROJECTS, {
+  const { loading, error, data, refetch } = useQuery(PROJECTS_QUERY, {
     variables: { companyId },
   });
   const [selectedProject, setSelectedProject] = useState(null);
