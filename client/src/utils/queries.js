@@ -53,11 +53,11 @@ export const DAILY_LOGS_QUERY = gql`
 `;
 
 export const PROJECTS_QUERY = gql`
-  query GetProjects($companyId: ID!) {
-    projects(companyId: $companyId) {
+  query GetProjects($userId: ID!) {
+    projects(userId: $userId) {
       _id
       name
-      company {
+      users{
         _id
         name
       }
@@ -72,15 +72,11 @@ query GetMe {
     name
     email
     role
-    company {
-      _id
-      name
       projects {
         _id
         name
       }
     }
-  }
 }
 `;
 

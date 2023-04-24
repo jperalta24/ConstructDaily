@@ -1,15 +1,26 @@
 import React, { useState } from 'react';
+import { useQuery, useMutation } from '@apollo/client';
 import DailyLogForm from '../components/DailyLogs/DailyLogForm';
-import DailyLogItem from '../components/DailyLogs/DailyLogItem';
 import DailyLogList from '../components/DailyLogs/DailyLogList';
+import { DAILY_LOGS_QUERY } from '../utils/queries';
+import { CREATE_DAILYLOG } from '../utils/mutations';
 
-const DisplayLogPage = () => {
-  const [dailyLogs, setDailyLogs] = useState([]);
+const DisplayLogPage = ({ projectId }) => {
   const [showForm, setShowForm] = useState(false);
+  const { loading, error, data } = useQuery(DAILY_LOGS_QUERY, {
+    variables: { projectId },
+  });
 
-  const handleDailyLogSubmit = (dailyLog) => {
-    setDailyLogs([...dailyLogs, dailyLog]);
-    setShowForm(false);
+  const [createDailyLog, { error: createError }] = useMutation(CREATE_DAILYLOG);
+
+  const handleDailyLogSubmit = async (dailyLogData) => {
+    try {
+      const { data } = await createDailyLog({ variables: { ...dailyLogData, projectId } });
+      // No need to update the local state as the Apollo cache will handle it automatically
+      setShowForm(false);
+    } catch (error) {
+      console.error("Error creating daily log:", error);
+    }
   };
 
   if (loading) return <p>Loading...</p>;
@@ -18,14 +29,13 @@ const DisplayLogPage = () => {
   return (
     <div>
       <h1>Daily Log Page</h1>
-      <DailyLogList dailyLogs={dailyLogs} />
+      <DailyLogList projectId={projectId} />
       <button
         onClick={() => setShowForm(true)}
         className="btn btn-primary mt-3"
         >Create Form
       </button>
       {showForm && <DailyLogForm onSubmit={handleDailyLogSubmit} />}
-      <DailyLogItem />
     </div>
   );
 };

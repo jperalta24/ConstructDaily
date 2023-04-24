@@ -8,7 +8,6 @@ const RegisterForm = () => {
     email: '',
     password: '',
     role: '',
-    companyId: '',
   });
 
   const [createUser] = useMutation(CREATE_USER);
@@ -60,14 +59,6 @@ const RegisterForm = () => {
         <option value="manager">Manager</option>
         <option value="worker">Worker</option>
       </select>
-      <input
-        type="text"
-        name="companyId"
-        value={formData.companyId}
-        onChange={handleChange}
-        placeholder="Company ID"
-        required
-      />
       <button type="submit">Register</button>
     </form>
   );

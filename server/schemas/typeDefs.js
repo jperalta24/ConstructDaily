@@ -51,51 +51,61 @@ type Communication {
 }
 
 type User {
-    _id: ID!
-    name: String!
-    email: String!
-    role: String
-    company: Company!
-}
-
-type Company {
-    _id: ID!
-    name: String!
-    users: [User]
-    projects: [Project]
+  _id: ID!
+  name: String!
+  email: String!
+  role: String
+  projects: [Project]
 }
 
 type Project {
-    _id: ID!
-    name: String!
-    company: Company!
-    dailyLogs: [DailyLog]
+  _id: ID!
+  name: String!
+  users: [User]
+  dailyLogs: [DailyLog]
 }
 
 type Query {
-    projects: [Project]
-    project(_id: ID!): Project
-    users: [User]
-    user(_id: ID!): User
-    dailyLogs(projectId: ID!): [DailyLog]
-    dailyLog(_id: ID!): DailyLog
-    companies: [Company]
-    company(_id: ID!): Company
-    me: User
-  }
+  projects: [Project]
+  project(_id: ID!): Project
+  users: [User]
+  user(_id: ID!): User
+  dailyLogs(projectId: ID!): [DailyLog]
+  dailyLog(_id: ID!): DailyLog
+  me: User
+}
 
 type Mutation {
-  createUser(name: String!, email: String!, role: String, companyId: ID!): User
-  updateUser(_id: ID!, name: String, email: String, role: String, companyId: ID): User
+  createUser(name: String!, email: String!, password: String!): Auth
+  updateUser(_id: ID!, name: String, email: String, role: String): User
   deleteUser(_id: ID!): User
-  createCompany(name: String!): Company
-  updateCompany(_id: ID!, name: String): Company
-  deleteCompany(_id: ID!): Company
-  createProject(name: String!, companyId: ID!): Project
-  updateProject(_id: ID!, name: String, companyId: ID): Project
+  createProject(name: String!): Project
+  updateProject(_id: ID!, name: String): Project
   deleteProject(_id: ID!): Project
-  createDailyLog(projectId: ID!, date: String!, workCompleted: [WorkCompletedInput], materialsUsed: [MaterialsUsedInput], equipmentUsed: [EquipmentUsedInput], weather: WeatherInput, delays: [DelayInput], safetyIncidents: [SafetyIncidentInput], communications: [CommunicationInput]): DailyLog
-  updateDailyLog(_id: ID!, date: String, workCompleted: [WorkCompletedInput], materialsUsed: [MaterialsUsedInput], equipmentUsed: [EquipmentUsedInput], weather: WeatherInput, delays: [DelayInput], safetyIncidents: [SafetyIncidentInput], communications: [CommunicationInput]): DailyLog
+  addUserToProject(userId: ID!, projectId: ID!): Project
+  removeUserFromProject(userId: ID!, projectId: ID!): Project
+  createDailyLog(
+    projectId: ID!
+    date: String!
+    workCompleted: [WorkCompletedInput]
+    materialsUsed: [MaterialsUsedInput]
+    equipmentUsed: [EquipmentUsedInput]
+    weather: WeatherInput
+    delays: [DelayInput]
+    safetyIncidents: [SafetyIncidentInput]
+    communications: [CommunicationInput]
+  ): DailyLog
+  updateDailyLog(
+    _id: ID!
+    date: String
+    workCompleted: [WorkCompletedInput]
+    materialsUsed: [MaterialsUsedInput]
+    equipmentUsed: [EquipmentUsedInput]
+    weather: WeatherInput
+    delays: [DelayInput]
+    safetyIncidents: [SafetyIncidentInput]
+    communications: [CommunicationInput]
+  ): DailyLog
   deleteDailyLog(_id: ID!): DailyLog
   signIn(email: String!, password: String!): Auth
     }
@@ -136,7 +146,7 @@ type Mutation {
     }
 
   type Auth {
-    token: String
+    token: ID!
     user: User
   }
   `;
