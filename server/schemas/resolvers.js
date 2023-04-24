@@ -51,8 +51,13 @@ const resolvers = {
     },
     createUser: async (parent, { name, email, password }) => {
       const user = await User.create({ name, email, password });
-      const token = signToken(user);
-      return { token, user };
+      if (user) {
+        const token = signToken(user);
+        return { token, user };
+      }
+    
+      // If something goes wrong during the user creation process, throw an error
+      throw new Error('Error creating user.');
     },
     updateUser: async (parent, { _id, name, email, role }) => {
       const user = await User.findByIdAndUpdate(_id, { name, email, role }, { new: true });
