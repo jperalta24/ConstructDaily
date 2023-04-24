@@ -1,11 +1,15 @@
-// import React, { useState } from 'react';
-// import { useQuery } from '@apollo/client';
-// import { GET_COMPANIES } from '../graphql/queries';
-// import CompanyItem from './CompanyItem';
-// import CompanyForm from './CompanyForm';
+import React from 'react';
+import CompanyItem from './CompanyItem';
 
-const CompanyList = () => {
- /// leave this file blank for now 
-};
+function CompanyList({ companies }) {
+  return (
+    <div>
+      {companies.map(company => (
+        <CompanyItem key={company._id} company={company} />
+      ))}
+    </div>
+  );
+}
 
 export default CompanyList;
+
