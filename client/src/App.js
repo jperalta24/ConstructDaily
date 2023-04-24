@@ -10,6 +10,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import ProjectList from './components/Projects/ProjectList';
 
 import MyNav from './components/Navigation/Nav';
 
@@ -44,6 +45,7 @@ const App = () => {
           {/* Add other routes here */}
         </Routes>
       </Router>
+      main
     </ApolloProvider>
   );
 };
