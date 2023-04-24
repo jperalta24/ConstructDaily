@@ -57,7 +57,7 @@ export const PROJECTS_QUERY = gql`
     projects(userId: $userId) {
       _id
       name
-      user{
+      users{
         _id
         name
       }
