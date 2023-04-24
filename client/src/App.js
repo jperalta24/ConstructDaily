@@ -1,5 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import ProjectPage from './pages/ProjectPage';
+import DailyLogPage from './pages/DailyLogPage';
 import {
   ApolloClient,
   InMemoryCache,
@@ -8,7 +11,6 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-//import pages todo
 import MyNav from './components/Navigation/Nav';
 
 const httpLink = createHttpLink({
@@ -30,16 +32,22 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-function App() {
+const App = () => {
   return (
     <ApolloProvider client={client}>
-    <div className="App">
-      <header className="App-header">
-        <MyNav/>
-      </header>
-    </div>
+      <Router>
+        <MyNav />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/projects" element={<ProjectPage />} />
+          <Route path="/dailylog" element={<DailyLogPage />} />
+          {/* Add other routes here */}
+        </Routes>
+      </Router>
     </ApolloProvider>
   );
-}
+};
 
 export default App;
+
+
