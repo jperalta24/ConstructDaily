@@ -43,7 +43,7 @@ const HomePage = () => {
           <button onClick={() => handleButtonClick('login')}>Login</button>
           <LoginForm />
           <button onClick={() => handleButtonClick('register')}>Register New User</button>
-          <RegisterForm />
+          <RegisterForm onSuccess={() => setLoggedIn(true)} />
           {/* <button onClick={() => handleButtonClick('profile')}>User Profile</button> */}
         </div>
       )}
