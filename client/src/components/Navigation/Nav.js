@@ -3,36 +3,40 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
 import  RegisterForm from '../Users/RegisterForm'
 import LoginForm from '../Users/LoginForm';
+import HomePage  from '../../pages/HomePage';
 
 const MyNav = () => {
   const location = useLocation();
 
   return (
-    <nav>
-      <ul>
+    <div className='navbar'>
+    <Navbar>
+      <ul className='home-page-items'>
         {location.pathname !== '/' && (
-          <li>
-            <NavLink exact to="/" activeClassName="active">
+          <li className='items'>
+            <NavLink to="/" className="active">
               Home
             </NavLink>
           </li>
         )}
         {location.pathname !== '/projects' && (
-          <li>
-            <NavLink to="/projects" activeClassName="active">
+          <li className='items' id='projects'>
+            <NavLink to="/projects" className="active">
               Projects
             </NavLink>
           </li>
         )}
         {location.pathname !== '/dailylog' && (
           <li>
-            <NavLink to="/dailylog" activeClassName="active">
+            <NavLink to="/dailylog" className="active">
               Daily Log
             </NavLink>
           </li>
         )}
       </ul>
-    </nav>
+      <HomePage />
+    </Navbar>
+      </div>
   );
 };
 
