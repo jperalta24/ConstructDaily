@@ -1,19 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
 import { SIGN_IN } from '../../utils/mutations';
 import AuthService from '../../utils/auth';
+import { Navigate, useNavigate } from 'react-router-dom';
 
-const LoginForm = () => {
+
+const LoginForm = (props) => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [signIn] = useMutation(SIGN_IN);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+  
 
     try {
       const { data } = await signIn({ variables: { email, password } });
-      AuthService.login(data.signIn.token);
+      AuthService.login(data.signIn.token)
+      setIsLoggedIn(true);
+      navigate('/profile');
+      // props.onSuccess(); // Call this after the navigate function
     } catch (err) {
       console.error(err);
     }

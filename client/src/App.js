@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ProjectPage from './pages/ProjectPage';
 import DailyLogPage from './pages/DailyLogPage';
+import UserProfile from './components/Users/UserProfile';
 import {
   ApolloClient,
   InMemoryCache,
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/projects" element={<ProjectPage />} />
           <Route path="/dailylog" element={<DailyLogPage />} />
+          <Route path="/profile" element={<UserProfile />} />
           {/* Add other routes here */}
         </Routes>
       </Router>
