@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 // import {
 //   Container,
 //   Card,
@@ -15,38 +16,21 @@ import UserProfile  from '../components/Users/UserProfile';
 
 const HomePage = () => {
   const [result, setResult] = useState('');
-  const [loggedIn, setLoggedIn] = useState(false); // State variable to track logged in status
 
   const handleButtonClick = (option) => {
-    // Logic to handle button click based on option
-    if (option === 'login') {
-      setResult('Login button clicked');
-      setLoggedIn(true); // Set logged in status to true
-    } else if (option === 'register') {
-      setResult('Register button clicked');
-      setLoggedIn(true); // Set logged in status to true
-    } else if (option === 'profile') {
-      setResult('User Profile button clicked');
-      setLoggedIn(true); // Set logged in status to true
-    }
+    // Removed logic to navigate from here
   };
 
   return (
     <div>
       <h1>Home Page</h1>
-      {loggedIn ? (
-        <div>
-          <UserProfile />
-        </div>
-      ) : (
         <div>
           <button onClick={() => handleButtonClick('login')}>Login</button>
           <LoginForm />
-          <button onClick={() => handleButtonClick('register')}>Register New User</button>
-          <RegisterForm onSuccess={() => setLoggedIn(true)} />
+          {/* <button onClick={() => handleButtonClick('register')}>Register New User</button> */}
+          <RegisterForm />
           {/* <button onClick={() => handleButtonClick('profile')}>User Profile</button> */}
         </div>
-      )}
       {/* {result && <p>Result: {result}</p>} */}
     </div>
   );
