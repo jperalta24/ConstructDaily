@@ -40,14 +40,14 @@ const App = () => {
       <Router>
         <MyNav />
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/projects" element={<ProjectPage />} />
+          {/* <Route path="/" element={<HomePage />} /> */}
+          <Route path="/Projects" element={<ProjectPage />} />
           <Route path="/dailylog" element={<DailyLogPage />} />
           <Route path="/profile" element={<UserProfile />} />
           {/* Add other routes here */}
         </Routes>
       </Router>
-      main
+      {/* main */}
     </ApolloProvider>
   );
 };

@@ -37,12 +37,58 @@
   }
 }
 
-* {
+/* * {
   background-color: lightgray;
   color: darkgray;
-}
+} */
 
-.project-page {
+/* .project-page {
   display: flex;
   justify-content: center;
+} */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: #2D73A7;
+  color: #333333;
+  height: 100px;
+  width: 100%;
+}
+
+.homepage-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  grid-template-columns: auto auto;
+  text-align: center;
+}
+
+.home-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.option-btn:hover {
+  background-color: #1DB954;
+}
+
+Button {
+  margin-right: 10px;
+}
+
+.home-page-items {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+.items {
+  display: flex;
+  margin-right: 10px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
 }

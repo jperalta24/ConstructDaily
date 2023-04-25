@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { Container, Button } from '@mantine/core';
-import { LoginForm, RegisterForm, UserProfile } from '../components/Users'; // Replace with your actual components
+import React, { useState } from "react";
+import { Container, Button } from "@mantine/core";
+import { LoginForm, RegisterForm, UserProfile } from "../components/Users"; // Replace with your actual components
+import "../App.css";
 
 const HomePage = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -11,19 +12,19 @@ const HomePage = () => {
   const handleLoginClick = () => {
     setShowLogin(true);
     setShowRegisterForm(false);
-    setShowProfile(false)
+    setShowProfile(false);
   };
 
   const handleRegisterClick = () => {
     setShowLogin(false);
     setShowRegisterForm(true);
-    setShowProfile(false)
+    setShowProfile(false);
   };
 
   const handleUserClick = () => {
     setShowLogin(false);
     setShowRegisterForm(false);
-    setShowProfile(true)
+    setShowProfile(true);
   };
 
   const handleLoginSuccess = () => {
@@ -31,19 +32,27 @@ const HomePage = () => {
   };
 
   return (
-    <Container>
-      <h1>Welcome to HomePage</h1>
+    <Container className="homepage-container">
+      <div>
+        <h1>Welcome to HomePage</h1>
+      </div>
       {loggedIn ? (
         <UserProfile />
       ) : (
-        <>
-      <Button onClick={handleLoginClick}>Login</Button>
-      <Button onClick={handleRegisterClick}>Register</Button>
-      <Button onClick={handleUserClick}>Profile</Button>
-      {showLogin && <LoginForm onSuccess={handleLoginSuccess}/>}
-      {showRegisterForm && <RegisterForm />}
-      {showUser && <UserProfile />}
-      </>
+        <div className="home-buttons">
+          <Button className="option-btn" onClick={handleLoginClick}>
+            Login
+          </Button>
+          <Button className="option-btn" onClick={handleRegisterClick}>
+            Register
+          </Button>
+          <Button className="option-btn" onClick={handleUserClick}>
+            Profile
+          </Button>
+          {showLogin && <LoginForm onSuccess={handleLoginSuccess} />}
+          {showRegisterForm && <RegisterForm />}
+          {showUser && <UserProfile />}
+        </div>
       )}
     </Container>
   );
