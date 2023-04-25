@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { CREATE_USER } from '../../utils/mutations';
+import { Link } from 'react-router-dom';
+import Auth from '../../utils/auth';
 
-const RegisterForm = () => {
+const RegisterForm = (props) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -10,7 +12,7 @@ const RegisterForm = () => {
     role: '',
   });
 
-  const [createUser] = useMutation(CREATE_USER);
+  const [createUser, {error,data}] = useMutation(CREATE_USER);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,6 +23,9 @@ const RegisterForm = () => {
     e.preventDefault();
     try {
       const { data } = await createUser({ variables: formData });
+      Auth.login(data.createUser.token);
+      props.onSuccess();
+
       console.log('User created successfully:', data);
     } catch (error) {
       console.error('Error creating user:', error);
