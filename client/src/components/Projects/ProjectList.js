@@ -4,9 +4,9 @@ import { PROJECTS_QUERY } from '../../utils/queries';
 import ProjectItem from './ProjectItem';
 import ProjectForm from './ProjectForm';
 
-const ProjectList = ({ companyId }) => {
+const ProjectList = ({ userId }) => {
   const { loading, error, data, refetch } = useQuery(PROJECTS_QUERY, {
-    variables: { companyId },
+    variables: { userId },
   });
   const [selectedProject, setSelectedProject] = useState(null);
 
@@ -29,9 +29,10 @@ const ProjectList = ({ companyId }) => {
         />
       ))}
       <h3>{selectedProject ? 'Edit Project' : 'Add Project'}</h3>
-      <ProjectForm project={selectedProject} companyId={companyId} onFinished={handleFinished} />
+      <ProjectForm project={selectedProject} userId={userId} onFinished={handleFinished} />
     </div>
   );
 };
 
 export default ProjectList;
+

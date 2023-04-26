@@ -66,10 +66,10 @@ type Project {
 }
 
 type Query {
-  projects: [Project]
+  projects(userId: ID!): [Project]
   project(_id: ID!): Project
   users: [User]
-  user(_id: ID!): User
+  user(name: String!): User
   dailyLogs(projectId: ID!): [DailyLog]
   dailyLog(_id: ID!): DailyLog
   me: User
@@ -79,7 +79,7 @@ type Mutation {
   createUser(name: String!, email: String!, password: String!, role: String): Auth
   updateUser(_id: ID!, name: String, email: String, role: String): User
   deleteUser(_id: ID!): User
-  createProject(name: String!): Project
+  createProject(name: String!, userId: ID!): Project
   updateProject(_id: ID!, name: String): Project
   deleteProject(_id: ID!): Project
   addUserToProject(userId: ID!, projectId: ID!): Project

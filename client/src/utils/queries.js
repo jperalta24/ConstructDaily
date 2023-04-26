@@ -52,6 +52,21 @@ export const DAILY_LOGS_QUERY = gql`
 
 `;
 
+export const QUERY_USER = gql`
+  query user($name: String!) {
+    user(name: $name) {
+      _id
+      name
+      email
+      role
+      projects {
+        _id
+        name
+      }
+    }
+  }
+`;
+
 export const PROJECTS_QUERY = gql`
   query GetProjects($userId: ID!) {
     projects(userId: $userId) {
