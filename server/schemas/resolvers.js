@@ -22,7 +22,11 @@ const resolvers = {
       return await User.findOne({ name }).populate("projects");
     },
     dailyLogs: async (_, { projectId }) => {
-      return await DailyLog.find({ project: projectId });
+      console.log('projectId:', projectId);
+      const logs = await DailyLog.find({ project: projectId });
+      console.log('logs:', logs); // Log the logs array
+      return logs;
+      // return await DailyLog.find({ project: projectId });
     },
     me: async (parent, args, context) => {
       if (context.user) {

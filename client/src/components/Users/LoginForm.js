@@ -14,12 +14,14 @@ const LoginForm = (props) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log('Submitting form...');
   
 
     try {
       const { data } = await signIn({ variables: { email, password } });
       AuthService.login(data.signIn.token)
       setIsLoggedIn(true);
+      props.onSuccess();
       // <Navigate to="/profile"/>;
       // props.onSuccess(); // Call this after the navigate function
     } catch (err) {
