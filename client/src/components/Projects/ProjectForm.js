@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { CREATE_PROJECT, UPDATE_PROJECT } from '../../utils/mutations';
 
-const ProjectForm = ({ project = null, companyId, onFinished }) => {
+const ProjectForm = ({ project = null, userId, onFinished }) => {
   const isNewProject = project === null;
   const [formData, setFormData] = useState({
     name: project?.name || '',
@@ -19,7 +19,7 @@ const ProjectForm = ({ project = null, companyId, onFinished }) => {
     e.preventDefault();
     try {
       const variables = isNewProject
-        ? { ...formData, companyId }
+        ? { ...formData, userId }
         : { _id: project._id, ...formData };
       await saveProject({ variables });
       onFinished();

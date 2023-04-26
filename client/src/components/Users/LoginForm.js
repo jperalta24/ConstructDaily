@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
 import { SIGN_IN } from '../../utils/mutations';
 import AuthService from '../../utils/auth';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 
 const LoginForm = (props) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [signIn] = useMutation(SIGN_IN);
@@ -20,7 +20,7 @@ const LoginForm = (props) => {
       const { data } = await signIn({ variables: { email, password } });
       AuthService.login(data.signIn.token)
       setIsLoggedIn(true);
-      navigate('/profile');
+      // <Navigate to="/profile"/>;
       // props.onSuccess(); // Call this after the navigate function
     } catch (err) {
       console.error(err);
@@ -48,6 +48,8 @@ const LoginForm = (props) => {
         />
       </div>
       <button type="submit">Login</button>
+      <div>
+      </div>
     </form>
   );
 };
