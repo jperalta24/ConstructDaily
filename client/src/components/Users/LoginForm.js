@@ -3,6 +3,8 @@ import { useMutation } from '@apollo/client';
 import { SIGN_IN } from '../../utils/mutations';
 import AuthService from '../../utils/auth';
 import { Navigate } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 
 const LoginForm = (props) => {
@@ -30,29 +32,24 @@ const LoginForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
-      <div>
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <button type="submit">Login</button>
-      <div>
-      </div>
-    </form>
+    
+      <Form className='mt-4' onSubmit={handleFormSubmit}>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Email address</Form.Label>
+        <Form.Control value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter email" />
+        
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" />
+      </Form.Group>
+     
+      <Button variant="primary" type="submit">
+        Login
+      </Button>
+    </Form>
+    
   );
 };
 

@@ -4,10 +4,8 @@ import HomePage from './pages/HomePage';
 import ProjectPage from './pages/ProjectPage';
 import DailyLogPage from './pages/DailyLogPage';
 import {UserProfile,LoginForm, RegisterForm} from './components/Users/';
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
-import HomePage from './Pages/HomePage';
-import ProjectPage from './Pages/ProjectPage';
-import DailyLogPage from './Pages/DailyLogPage';
+
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -48,6 +46,7 @@ const App = () => {
           <Route path="/projects" element={<ProjectPage />} />
           <Route path="/dailylog" element={<DailyLogPage />} />
           <Route path="/login"element={<LoginForm/>}/>
+          <Route path="/signup"element={<RegisterForm/>}/>
           <Route path="/profile" element={<UserProfile />} />
           {/* Add other routes here */}
         </Routes>
