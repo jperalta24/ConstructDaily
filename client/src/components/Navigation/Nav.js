@@ -1,38 +1,59 @@
 import React, { useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
-import  RegisterForm from '../Users/RegisterForm'
+import RegisterForm from '../Users/RegisterForm'
 import LoginForm from '../Users/LoginForm';
+import HomePage from '../../pages/HomePage';
+import Auth from '../../utils/auth';
 
 const MyNav = () => {
-  const location = useLocation();
-
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  }
   return (
-    <nav>
-      <ul>
-        {location.pathname !== '/' && (
-          <li>
-            <NavLink exact to="/" activeClassName="active">
+    <div className='navbar'>
+      <Navbar>
+        <ul className='home-page-items'>
+          <li className='items' id='home'>
+            <Link to="/" className="active">
               Home
-            </NavLink>
+            </Link>
           </li>
-        )}
-        {location.pathname !== '/projects' && (
-          <li>
-            <NavLink to="/projects" activeClassName="active">
+          <li className='items' id='projects'>
+            <Link to="/projects" className="active">
               Projects
-            </NavLink>
+            </Link>
           </li>
-        )}
-        {location.pathname !== '/dailylog' && (
           <li>
-            <NavLink to="/dailylog" activeClassName="active">
+            <Link to="/dailylog" className="active">
               Daily Log
-            </NavLink>
+            </Link>
           </li>
-        )}
-      </ul>
-    </nav>
+        </ul>
+        <div>
+          {Auth.loggedIn() ? (
+            <>
+              <Link className="btn btn-lg btn-info m-2" to="/profile">
+                {Auth.getProfile().data.name}
+              </Link>
+              <button className="btn btn-lg btn-light m-2" onClick={logout}>
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link className="btn btn-lg btn-info m-2" to="/login">
+                Login
+              </Link>
+              <Link className="btn btn-lg btn-light m-2" to="/signup">
+                Signup
+              </Link>
+            </>
+          )}
+        </div>
+      </Navbar>
+    </div>
   );
 };
 

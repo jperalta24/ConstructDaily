@@ -1,4 +1,9 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import ProjectPage from './pages/ProjectPage';
+import DailyLogPage from './pages/DailyLogPage';
+import {UserProfile,LoginForm, RegisterForm} from './components/Users/';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
 import ProjectPage from './Pages/ProjectPage';
@@ -42,10 +47,12 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/projects" element={<ProjectPage />} />
           <Route path="/dailylog" element={<DailyLogPage />} />
+          <Route path="/login"element={<LoginForm/>}/>
+          <Route path="/profile" element={<UserProfile />} />
           {/* Add other routes here */}
         </Routes>
       </Router>
-      main
+      {/* main */}
     </ApolloProvider>
   );
 };

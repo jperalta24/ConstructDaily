@@ -10,10 +10,6 @@ mutation SignIn($email: String!, $password: String!) {
       name
       email
       role
-      projects {
-        _id
-        name
-      }
     }
   }
 }

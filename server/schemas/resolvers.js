@@ -8,8 +8,9 @@ const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 const resolvers = {
   Query: {
-    projects: async () => {
-      return await Project.find({}).populate(["users", "dailyLogs"]);
+    projects: async (_, { userId }) => {
+      const user = await User.findById(userId).populate("projects");
+      return user.projects;
     },
     project: async (_, { id }) => {
       return await Project.findById(id).populate(["users", "dailyLogs"]);
@@ -17,11 +18,15 @@ const resolvers = {
     users: async () => {
       return await User.find({}).populate("projects");
     },
-    user: async (_, { id }) => {
-      return await User.findById(id).populate("projects");
+    user: async (parent, { name }) => {
+      return await User.findOne({ name }).populate("projects");
     },
     dailyLogs: async (_, { projectId }) => {
-      return await DailyLog.find({ project: projectId });
+      console.log('projectId:', projectId);
+      const logs = await DailyLog.find({ project: projectId });
+      console.log('logs:', logs); // Log the logs array
+      return logs;
+      // return await DailyLog.find({ project: projectId });
     },
     me: async (parent, args, context) => {
       if (context.user) {
@@ -55,7 +60,7 @@ const resolvers = {
         const token = signToken(user);
         return { token, user };
       }
-    
+
       // If something goes wrong during the user creation process, throw an error
       throw new Error('Error creating user.');
     },
@@ -67,8 +72,17 @@ const resolvers = {
       const user = await User.findByIdAndDelete(_id);
       return user;
     },
-    createProject: async (parent, { name }) => {
-      const project = await Project.create({ name });
+    createProject: async (parent, { name, userId }) => {
+      const user = await User.findById(userId);
+
+      if (!user) {
+        throw new Error('User not found');
+      }
+
+      const project = await Project.create({ name, userId });
+      user.projects.push(project._id);
+      await user.save();
+
       return project;
     },
     updateProject: async (parent, { _id, name }) => {

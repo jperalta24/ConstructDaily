@@ -1,55 +1,125 @@
-import React, { useState } from 'react';
-// import {
-//   Container,
-//   Card,
-//   Button,
-//   Row,
-//   Col
-// } from 'react-bootstrap';
-// will use later for finaly JSX
+// import React, { useState } from "react";
+// import { Container, Button } from "@mantine/core";
+// import { LoginForm, RegisterForm, UserProfile } from "../components/Users"; // Replace with your actual components
+// import "../App.css";
 
-import LoginForm  from '../components/Users/LoginForm';
-import RegisterForm  from '../components/Users/RegisterForm';
-import UserProfile  from '../components/Users/UserProfile';
-// import {}
+
+// const HomePage = () => {
+//   const [showLogin, setShowLogin] = useState(false);
+//   const [showRegisterForm, setShowRegisterForm] = useState(false);
+//   const [showUser, setShowProfile] = useState(false);
+//   const [loggedIn, setLoggedIn] = useState(false);
+
+//   const handleLoginClick = () => {
+//     setShowLogin(true);
+//     setShowRegisterForm(false);
+//     setShowProfile(false);
+//   };
+
+//   const handleRegisterClick = () => {
+//     setShowLogin(false);
+//     setShowRegisterForm(true);
+//     setShowProfile(false);
+//   };
+
+//   const handleUserClick = () => {
+//     setShowLogin(false);
+//     setShowRegisterForm(false);
+//     setShowProfile(true);
+//   };
+
+//   const handleLoginSuccess = () => {
+//     setLoggedIn(true); // Set logged in status to true
+//   };
+
+//   return (
+//     <Container className="homepage-container">
+//       <div>
+//         <h1>Welcome to HomePage</h1>
+//       </div>
+//       {loggedIn ? (
+//         <UserProfile />
+//       ) : (
+//         <div className="home-buttons">
+//           <Button className="option-btn" onClick={handleLoginClick}>
+//             Login
+//           </Button>
+//           <Button className="option-btn" onClick={handleRegisterClick}>
+//             Register
+//           </Button>
+//           <Button className="option-btn" onClick={handleUserClick}>
+//             Profile
+//           </Button>
+//           {showLogin && <LoginForm onSuccess={handleLoginSuccess} />}
+//           {showRegisterForm && <RegisterForm />}
+//           {showUser && <UserProfile />}
+//         </div>
+//       )}
+//     </Container>
+//   );
+// };
+
+// export default HomePage;
+
+import React, { useState } from "react";
+import { Container, Button } from "@mantine/core";
+import { LoginForm, RegisterForm, UserProfile } from "../components/Users";
+import "../App.css";
+import AuthService from "../utils/auth"; // Import AuthService
 
 const HomePage = () => {
-  const [result, setResult] = useState('');
-  const [loggedIn, setLoggedIn] = useState(false); // State variable to track logged in status
+  const [showLogin, setShowLogin] = useState(false);
+  const [showRegisterForm, setShowRegisterForm] = useState(false);
+  const [showUser, setShowProfile] = useState(false);
 
-  const handleButtonClick = (option) => {
-    // Logic to handle button click based on option
-    if (option === 'login') {
-      setResult('Login button clicked');
-      setLoggedIn(true); // Set logged in status to true
-    } else if (option === 'register') {
-      setResult('Register button clicked');
-      setLoggedIn(true); // Set logged in status to true
-    } else if (option === 'profile') {
-      setResult('User Profile button clicked');
-      setLoggedIn(true); // Set logged in status to true
-    }
+  const handleLoginClick = () => {
+    setShowLogin(true);
+    setShowRegisterForm(false);
+    setShowProfile(false);
+  };
+
+  const handleRegisterClick = () => {
+    setShowLogin(false);
+    setShowRegisterForm(true);
+    setShowProfile(false);
+  };
+
+  const handleUserClick = () => {
+    setShowLogin(false);
+    setShowRegisterForm(false);
+    setShowProfile(true);
+  };
+
+  const handleLoginSuccess = () => {
+    setShowLogin(false); // Hide login form
   };
 
   return (
-    <div>
-      <h1>Home Page</h1>
-      {loggedIn ? (
-        <div>
-          <UserProfile />
-        </div>
+    <Container className="homepage-container">
+      <div>
+        <h1>Welcome to HomePage</h1>
+      </div>
+      {AuthService.loggedIn() ? (
+        <UserProfile />
       ) : (
-        <div>
-          <button onClick={() => handleButtonClick('login')}>Login</button>
-          <LoginForm />
-          <button onClick={() => handleButtonClick('register')}>Register New User</button>
-          <RegisterForm onSuccess={() => setLoggedIn(true)} />
-          {/* <button onClick={() => handleButtonClick('profile')}>User Profile</button> */}
+        <div className="home-buttons">
+          <Button className="option-btn" onClick={handleLoginClick}>
+            Login
+          </Button>
+          <Button className="option-btn" onClick={handleRegisterClick}>
+            Register
+          </Button>
+          <Button className="option-btn" onClick={handleUserClick}>
+            Profile
+          </Button>
+          {showLogin && <LoginForm onSuccess={handleLoginSuccess} />}
+          {showRegisterForm && <RegisterForm />}
+          {showUser && <UserProfile />}
         </div>
       )}
-      {/* {result && <p>Result: {result}</p>} */}
-    </div>
+    </Container>
   );
 };
 
 export default HomePage;
+

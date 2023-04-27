@@ -6,50 +6,51 @@ export const DAILY_LOGS_QUERY = gql`
       _id
       date
       workCompleted {
-        worker {
-          _id
-          name
-          role
-        }
-        hours
+        workerName
+        taskDescription
+        hoursWorked
       }
       materialsUsed {
-        material {
-          _id
-          name
-        }
+        materialName
         quantity
-        location
       }
       equipmentUsed {
-        equipment {
-          _id
-          name
-        }
-        hours
-        issues
+        equipmentName
+        hoursUsed
       }
       weather {
         temperature
-        windSpeed
-        precipitation
+        conditions
       }
       delays {
-        reason
-        mitigation
+        description
+        duration
       }
       safetyIncidents {
-        nature
-        injuries
+        description
+        severity
       }
       communications {
-        type
-        date
-        details
+        messageType
+        messageContent
       }
     }
   }
+`;
 
+export const QUERY_USER = gql`
+  query user($name: String!) {
+    user(name: $name) {
+      _id
+      name
+      email
+      role
+      projects {
+        _id
+        name
+      }
+    }
+  }
 `;
 
 export const PROJECTS_QUERY = gql`
