@@ -16,10 +16,10 @@ const dailyLogSchema = new mongoose.Schema({
     equipmentName: String,
     hoursUsed: Number,
   }],
-  weather: {
+  weather: [{
     temperature: Number,
     conditions: String,
-  },
+  }],
   delays: [{
     description: String,
     duration: Number,

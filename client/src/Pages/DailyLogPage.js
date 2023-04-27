@@ -35,7 +35,8 @@ const DisplayLogPage = ({ projectId }) => {
         className="btn btn-primary mt-3"
         >Create Form
       </button>
-      {showForm && <DailyLogForm onSubmit={handleDailyLogSubmit} />}
+      {showForm && <DailyLogForm onSubmit={handleDailyLogSubmit} project={projectId} />}
+
     </div>
   );
 };

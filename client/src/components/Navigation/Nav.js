@@ -1,24 +1,31 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import { Navbar, Nav, Modal, Tab } from 'react-bootstrap';
+import { Container, Button } from "@mantine/core";
 import RegisterForm from '../Users/RegisterForm'
 import LoginForm from '../Users/LoginForm';
 import HomePage from '../../pages/HomePage';
 import Auth from '../../utils/auth';
 
 const MyNav = () => {
+  const navigate = useNavigate();
+
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
-  }
+    navigate('/');
+  };
   return (
     <div className='navbar'>
+      <Container className="homepage-container">
       <Navbar>
         <ul className='home-page-items'>
           <li className='items' id='home'>
+          <Button>
             <Link to="/" className="active">
               Home
             </Link>
+            </Button>
           </li>
           <li className='items' id='projects'>
             <Link to="/projects" className="active">
@@ -53,6 +60,7 @@ const MyNav = () => {
           )}
         </div>
       </Navbar>
+      </Container>
     </div>
   );
 };
