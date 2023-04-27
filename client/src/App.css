@@ -37,10 +37,9 @@
   }
 }
 
-/* * {
-  background-color: lightgray;
-  color: darkgray;
-} */
+body,html {
+  background-color: #857f7f44;
+}
 
 /* .project-page {
   display: flex;
@@ -56,17 +55,25 @@
   width: 100%;
 }
 
-.homepage-container {
+.logged-in {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  border: 5px solid;
   width: 100%;
-  grid-template-columns: auto auto;
-  text-align: center;
+  margin-top: 10px;
 }
 
-.home-buttons {
-  display: flex;
-  align-items: center;
+.homepage-container {
+  width: 100%;
+  margin-top: 8.6px;
+  text-align: center;
+  border: 5px solid black;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  background: linear-gradient(
+    45deg, rgb(177, 177, 177),rgb(85, 85, 85)
+  );
 }
 
 .option-btn:hover {
@@ -77,7 +84,7 @@ Button {
   margin-right: 10px;
 }
 
-.home-page-items {
+.navbar-items {
   display: flex;
   flex-direction: row;
   list-style: none;
@@ -91,4 +98,49 @@ Button {
 a {
   color: black;
   text-decoration: none;
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid black;
+  border-radius: 30px;
+  height: 400px;
+  width: 60%;
+  background-color: #2D73A7;
+  margin-top: 150px;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  height: 100rem;
+  background-image: url(./images/construction\ background.jpg);
+  background-repeat: repeat;
+  background-position: center;
+}
+
+#email {
+  display: flex;
+  width: 50rem;
+}
+
+/* body {
+  height: 100%;
+  background-image: url(./images/construction\ background.jpg);
+  background-repeat: repeat;
+  background-position: center;
+  background-size: cover;
+  color: darkgray;
+} */
+
+#login-btn:hover {
+  background-color: #F6A833;
+  transform: scale(1.2);
+}
+
+#login-btn:active {
+  background-color: #1DB954;
+  transform: scale(1.2);
 }

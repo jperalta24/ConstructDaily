@@ -14,7 +14,7 @@ const MyNav = () => {
   return (
     <div className='navbar'>
       <Navbar>
-        <ul className='home-page-items'>
+        <ul className='navbar-items'>
           <li className='items' id='home'>
             <Link to="/" className="active">
               Home
