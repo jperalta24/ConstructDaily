@@ -66,7 +66,7 @@ type Project {
 }
 
 type Query {
-  projects(userId: ID!): [Project]
+  projects: [Project]
   project(_id: ID!): Project
   users: [User]
   user(name: String!): User

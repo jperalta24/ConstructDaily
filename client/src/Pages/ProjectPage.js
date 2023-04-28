@@ -18,19 +18,6 @@ export default function ProjectPage () {
   const [showForm, setShowForm] = useState(false);
   const { loading, error, data } = useQuery(PROJECTS_QUERY);
 
-  const cards = (
-    <Card p="md" radius="md" component="a" href="#">
-    <AspectRatio ratio={1920 / 1080}>
-      <Image />
-    </AspectRatio>
-    <Text color="dimmed" size="xs" transform="uppercase" weight={700} mt="md">
-    </Text>
-    Hello world this is the start of the project page
-    <Text mt={5}>
-    </Text>
-  </Card>
-  )
-
   const handleEdit = (project) => {
     setSelectedProject(project);
   };
@@ -47,10 +34,9 @@ export default function ProjectPage () {
   if (error) return <p>Error: {error.message} and this message will show if i am on the project page</p>;
 
   return (
-    <div>
+    <div  className='project-container'>
       <h1>Project Page</h1>
-      {cards}
-      <ProjectList projects={data.getProjects} handleEdit={handleEdit} />
+      <ProjectList projects={data.project} handleEdit={handleEdit} />
       <h2>{selectedProject ? 'Edit Project' : 'Create Project'}</h2>
       {/* Render the ProjectForm component based on showForm state */}
       {showForm ? (
