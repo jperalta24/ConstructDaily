@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 
+// const today = new Date().toISOString().split('T')[0];
 const DailyLogForm = ({ onSubmit, project }) => {
   const [formData, setFormData] = useState({
     date: '',
@@ -14,13 +16,10 @@ const DailyLogForm = ({ onSubmit, project }) => {
 
   const handleSimpleChange = (e) => {
     const { name, value } = e.target;
-    if (name === "date") {
-      const dateValue = new Date(value).toISOString();
-      setFormData({ ...formData, [name]: dateValue });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
+    setFormData({ ...formData, [name]: value });
   };
+  
+  
   
 
   const handleChange = (e, index, fieldName) => {
@@ -79,7 +78,8 @@ const DailyLogForm = ({ onSubmit, project }) => {
   // };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Container className="construction-theme-form mt-4">
+    <Form onSubmit={handleSubmit}>
       <input
         type="date"
         name="date"
@@ -242,8 +242,11 @@ const DailyLogForm = ({ onSubmit, project }) => {
         </div>
       ))}
       {/* Submit button */}
-      <button type="submit">Save Daily Log</button>
-    </form>
+      <Button type="submit" className="mt-3">
+        Save Daily Log
+      </Button>
+    </Form>
+  </Container>
   );
 };
 

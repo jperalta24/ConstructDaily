@@ -144,3 +144,41 @@ a {
   background-color: #1DB954;
   transform: scale(1.2);
 }
+
+.construction-theme {
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+}
+
+.construction-theme h4 {
+  display: flex;
+  align-items: center;
+}
+
+.construction-theme h4 svg {
+  margin-right: 8px;
+}
+
+
+.construction-theme {
+  background-color: #f7f7f7;
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
+
+.construction-theme h1 {
+  margin-bottom: 1rem;
+}
+
+
+.construction-theme-form {
+  background-color: #f7f7f7;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.construction-theme-form .form-label,
+.construction-theme-form .form-control {
+  margin-bottom: 0.5rem;
+}

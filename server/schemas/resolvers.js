@@ -117,8 +117,24 @@ const resolvers = {
     },
     createDailyLog: async (parent, { projectId, date, workCompleted, materialsUsed, equipmentUsed, weather, delays, safetyIncidents, communications }) => {
       const dailyLog = await DailyLog.create({ project: projectId, date, workCompleted, materialsUsed, equipmentUsed, weather, delays, safetyIncidents, communications });
-      return dailyLog;
+    
+      console.log("Daily log created:", dailyLog);
+    
+      await Project.findByIdAndUpdate(projectId, { $push: { dailyLogs: dailyLog._id } });
+    
+      const project = await Project.findById(projectId).populate('dailyLogs');
+      console.log("Updated project:", project);
+    
+      const populatedDailyLog = await DailyLog.findById(dailyLog._id).populate('project');
+      console.log("Populated daily log:", populatedDailyLog);
+    
+      return populatedDailyLog;
     },
+    
+    
+    
+
+
 
     updateDailyLog: async (parent, { _id, date, workCompleted, materialsUsed, equipmentUsed, weather, delays, safetyIncidents, communications }) => {
       const dailyLog = await DailyLog.findByIdAndUpdate(_id, { date, workCompleted, materialsUsed, equipmentUsed, weather, delays, safetyIncidents, communications }, { new: true });

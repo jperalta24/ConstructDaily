@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
 import DailyLogItem from './DailyLogItem';
 import {DAILY_LOGS_QUERY} from '../../utils/queries';
@@ -19,20 +20,29 @@ const DailyLogList = ({ projectId }) => {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div className="daily-log-list">
-      <h2>Daily Logs</h2>
-      {dailyLogs.length ? (
-        dailyLogs.map((dailyLog) => (
-          <DailyLogItem key={dailyLog._id} dailyLog={dailyLog} />
-        ))
-      ) : (
-        <p>No daily logs found.</p>
-      )}
-    </div>
+    <Container className="daily-log-list">
+      <Row>
+        <Col>
+          <h2>Daily Logs</h2>
+          {dailyLogs.length ? (
+            dailyLogs.map((dailyLog) => (
+              <DailyLogItem key={dailyLog._id} dailyLog={dailyLog} />
+            ))
+          ) : (
+            <Card>
+              <Card.Body>
+                <Card.Text>No daily logs found.</Card.Text>
+              </Card.Body>
+            </Card>
+          )}
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
 export default DailyLogList;
+
 
 
 
