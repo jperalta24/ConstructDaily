@@ -19,7 +19,7 @@ const MyNav = () => {
     <div className='navbar'>
       <Container className="homepage-container">
       <Navbar>
-        <ul className='home-page-items'>
+        <ul className='navbar-items'>
           <li className='items' id='home'>
           <Button>
             <Link to="/" className="active">
