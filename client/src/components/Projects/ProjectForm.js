@@ -9,7 +9,7 @@ const ProjectForm = ({ project = null, userId, onFinished }) => {
     name: project?.name || '',
   });
 
-  const [saveProject] = useMutation(isNewProject ? CREATE_PROJECT : UPDATE_PROJECT);
+  const [saveProject, {data, loading, error}] = useMutation(isNewProject ? CREATE_PROJECT : UPDATE_PROJECT);
   
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,10 +21,12 @@ const ProjectForm = ({ project = null, userId, onFinished }) => {
     console.log(formData)
     console.log(project)
     try {
+      console.log(isNewProject)
       const variables = isNewProject
         ? { ...formData, userId }
-        : { _id: project._id, name: formData.name, userId };
-      await saveProject({ variables });
+        : { _id: project._id, name: formData.name };
+        console.log(variables)
+      await saveProject({ variables: variables });
       onFinished();
     } catch (error) {
       console.error('Error saving project:', error);

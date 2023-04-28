@@ -48,6 +48,8 @@ const App = () => {
           <Route path="/login"element={<LoginForm/>}/>
           <Route path="/signup"element={<RegisterForm/>}/>
           <Route path="/profile" element={<UserProfile />} />
+          {/* we need the daily log path to route to a different page when clicking on a specific project */}
+          {/* <Route path="/dailylog/:projectId" element={<DailyLogPage />} /> */}
           {/* Add other routes here */}
         </Routes>
       </Router>
