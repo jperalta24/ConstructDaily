@@ -110,6 +110,7 @@ const HomePage = () => {
           {AuthService.loggedIn() ? (
             <UserProfile />
           ) : (
+            // comment
             <div className="not-logged-in-container">
               <div className="card mb-3">
               <div className="card-body">
