@@ -8,7 +8,7 @@ type DailyLog {
   workCompleted: [WorkCompleted]
   materialsUsed: [MaterialsUsed]
   equipmentUsed: [EquipmentUsed]
-  weather: Weather
+  weather: [Weather]
   delays: [Delay]
   safetyIncidents: [SafetyIncident]
   communications: [Communication]
@@ -90,7 +90,7 @@ type Mutation {
     workCompleted: [WorkCompletedInput]
     materialsUsed: [MaterialsUsedInput]
     equipmentUsed: [EquipmentUsedInput]
-    weather: WeatherInput
+    weather: [WeatherInput]
     delays: [DelayInput]
     safetyIncidents: [SafetyIncidentInput]
     communications: [CommunicationInput]
@@ -101,7 +101,7 @@ type Mutation {
     workCompleted: [WorkCompletedInput]
     materialsUsed: [MaterialsUsedInput]
     equipmentUsed: [EquipmentUsedInput]
-    weather: WeatherInput
+    weather: [WeatherInput]
     delays: [DelayInput]
     safetyIncidents: [SafetyIncidentInput]
     communications: [CommunicationInput]

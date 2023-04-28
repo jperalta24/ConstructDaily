@@ -117,16 +117,36 @@ mutation RemoveUserFromProject($userId: ID!, $projectId: ID!) {
 `;
 
 export const CREATE_DAILYLOG = gql`
-mutation CreateDailyLog($projectId: ID!, $date: String!) {
-  createDailyLog(projectId: $projectId, date: $date) {
-    _id
-    date
-    project {
+  mutation CreateDailyLog(
+    $projectId: ID!
+    $date: String!
+    $workCompleted: [WorkCompletedInput]
+    $materialsUsed: [MaterialsUsedInput]
+    $equipmentUsed: [EquipmentUsedInput]
+    $weather: [WeatherInput]
+    $delays: [DelayInput]
+    $safetyIncidents: [SafetyIncidentInput]
+    $communications: [CommunicationInput]
+  ) {
+    createDailyLog(
+      projectId: $projectId
+      date: $date
+      workCompleted: $workCompleted
+      materialsUsed: $materialsUsed
+      equipmentUsed: $equipmentUsed
+      weather: $weather
+      delays: $delays
+      safetyIncidents: $safetyIncidents
+      communications: $communications
+    ) {
       _id
-      name
+      date
+      project {
+        _id
+        name
+      }
     }
   }
-}
 `;
 
 export const UPDATE_DAILYLOG = gql`

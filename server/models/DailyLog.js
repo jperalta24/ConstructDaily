@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const dailyLogSchema = new mongoose.Schema({
-  date: { type: Date, required: true },
+  date: { type: Object, required: true },
   project: { type: mongoose.Schema.Types.ObjectId, ref: "Project" },
   workCompleted: [{
     workerName: String,
@@ -16,10 +16,10 @@ const dailyLogSchema = new mongoose.Schema({
     equipmentName: String,
     hoursUsed: Number,
   }],
-  weather: {
+  weather: [{
     temperature: Number,
     conditions: String,
-  },
+  }],
   delays: [{
     description: String,
     duration: Number,

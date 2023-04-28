@@ -1,87 +1,253 @@
 import React, { useState } from 'react';
-
+import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import dayjs from 'dayjs';
+// const today = new Date().toISOString().split('T')[0];
 const DailyLogForm = ({ onSubmit, project }) => {
   const [formData, setFormData] = useState({
-    workCompleted: '',
-    materialsUsed: '',
-    equipmentUsed: '',
-    weatherConditions: '',
-    delays: '',
-    safetyIncidents: '',
-    communications: '',
+    date: '',
+    workCompleted: [{}],
+    materialsUsed: [{}],
+    equipmentUsed: [[]],
+    weather: [[]],
+    delays: [[]],
+    safetyIncidents: [[]],
+    communications: [{}],
   });
 
-  const handleChange = (e) => {
+  const handleSimpleChange = (e) => {
     const { name, value } = e.target;
+    console.log(value)
     setFormData({ ...formData, [name]: value });
   };
+  
+  
+  
+
+  const handleChange = (e, index, fieldName) => {
+    const { name, value } = e.target;
+
+    if (fieldName === "weather") {
+      const updatedWeather = [...formData.weather];
+      updatedWeather[index] = { ...updatedWeather[index], [name]: value };
+      setFormData({ ...formData, weather: updatedWeather });
+    } else {
+      const updatedField = [...formData[fieldName]];
+      updatedField[index] = { ...updatedField[index], [name]: value };
+      setFormData({ ...formData, [fieldName]: updatedField });
+    }
+  };
+  // const handleChange = (e, index, fieldName) => {
+  //   const { name, value } = e.target;
+  //   const updatedField = [...formData[fieldName]];
+  //   updatedField[index] = { ...updatedField[index], [name]: value };
+  //   setFormData({ ...formData, [fieldName]: updatedField });
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(formData, project);
+
+    const updatedFormData = {
+      ...formData,
+      workCompleted: formData.workCompleted.map((item) => ({
+        ...item,
+        hoursWorked: parseInt(item.hoursWorked, 10) || 0,
+      })),
+      materialsUsed: formData.materialsUsed.map((item) => ({
+        ...item,
+        quantity: parseInt(item.quantity, 10) || 0,
+      })),
+      equipmentUsed: formData.equipmentUsed.map((item) => ({
+        ...item,
+        hoursUsed: parseInt(item.hoursUsed, 10) || 0,
+      })),
+      delays: formData.delays.map((item) => ({
+        ...item,
+        duration: parseInt(item.duration, 10) || 0,
+      })),
+      weather: formData.weather.map((item) => ({
+        ...item,
+        temperature: parseInt(item.temperature, 10) || 0,
+      })),
+    };
+
+    onSubmit(updatedFormData, project);
   };
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   onSubmit(formData, project);
+  // };
+
   return (
-    <form onSubmit={handleSubmit}>
+    <Container className="construction-theme-form mt-4">
+    <Form onSubmit={handleSubmit}>
+      <input
+        type="date"
+        name="date"
+        value={formData.date}
+        onChange={handleSimpleChange}
+        placeholder="Date"
+      />
       {/* Work completed */}
-      <input
-        type="text"
-        name="workCompleted"
-        value={formData.workCompleted}
-        onChange={handleChange}
-        placeholder="Work completed"
-      />
+      {formData.workCompleted.map((work, index) => (
+        <div key={index}>
+          <input
+            type="text"
+            name="taskDescription"
+            value={work.taskDescription}
+            onChange={(e) =>
+              handleChange(e, index, 'workCompleted')
+            }
+            placeholder="Work completed description"
+          />
+          <input
+            type="number"
+            name="hoursWorked"
+            value={work.hoursWorked}
+            onChange={(e) =>
+              handleChange(e, index, 'workCompleted')
+            }
+            placeholder="Work completed hours"
+          />
+          <input
+            type="text"
+            name="workerName"
+            value={work.workerName}
+            onChange={(e) =>
+              handleChange(e, index, 'workCompleted')
+            }
+            placeholder="Workers"
+          />
+        </div>
+      ))}
       {/* Materials used */}
-      <input
-        type="text"
-        name="materialsUsed"
-        value={formData.materialsUsed}
-        onChange={handleChange}
-        placeholder="Materials used"
-      />
+      {formData.materialsUsed.map((material, index) => (
+        <div key={index}>
+          <input
+            type="text"
+            name="materialName"
+            value={material.materialName}
+            onChange={(e) =>
+              handleChange(e, index, 'materialsUsed')
+            }
+            placeholder="Material name"
+          />
+          <input
+            type="number"
+            name="quantity"
+            value={material.quantity}
+            onChange={(e) =>
+              handleChange(e, index, 'materialsUsed')
+            }
+            placeholder="Material quantity"
+          />
+        </div>
+      ))}
       {/* Equipment used */}
-      <input
-        type="text"
-        name="equipmentUsed"
-        value={formData.equipmentUsed}
-        onChange={handleChange}
-        placeholder="Equipment used"
-      />
+      {formData.equipmentUsed.map((equipment, index) => (
+        <div key={index}>
+          <input
+            type="text"
+            name="equipmentName"
+            value={equipment.equipmentName}
+            onChange={(e) => handleChange(e, index, 'equipmentUsed')}
+            placeholder="Equipment used"
+          />
+          <input
+            type="number"
+            name="hoursUsed"
+            value={equipment.hoursUsed}
+            onChange={(e) => handleChange(e, index, 'equipmentUsed')}
+            placeholder="Hours used"
+          />
+        </div>
+      ))}
       {/* Weather conditions */}
-      <input
-        type="text"
-        name="weatherConditions"
-        value={formData.weatherConditions}
-        onChange={handleChange}
-        placeholder="Weather conditions"
-      />
+      {formData.weather.map((weather, index) => (
+        <div key={index}>
+          <input
+            type="text"
+            name="conditions"
+            value={weather.conditions}
+            onChange={(e) => handleChange(e, index, 'weather')}
+            placeholder="Weather conditions"
+          />
+          <input
+            type="number"
+            name="temperature"
+            value={weather.temperature}
+            onChange={(e) => handleChange(e, index, 'weather')}
+            placeholder="Temperature"
+          />
+        </div>
+      ))}
       {/* Delays */}
-      <input
-        type="text"
-        name="delays"
-        value={formData.delays}
-        onChange={handleChange}
-        placeholder="Delays"
-      />
+      {formData.delays.map((delay, index) => (
+        <div key={index}>
+          <input
+            type="text"
+            name="description"
+            value={delay.description}
+            onChange={(e) => handleChange(e, index, 'delays')}
+            placeholder="Delays"
+          />
+          <input
+            type="number"
+            name="duration"
+            value={delay.duration}
+            onChange={(e) => handleChange(e, index, 'delays')}
+            placeholder="Duration"
+          />
+        </div>
+      ))}
       {/* Safety incidents */}
-      <input
-        type="text"
-        name="safetyIncidents"
-        value={formData.safetyIncidents}
-        onChange={handleChange}
-        placeholder="Safety incidents"
-      />
+      {formData.safetyIncidents.map((incident, index) => (
+        <div key={index}>
+          <input
+            type="text"
+            name="description"
+            value={incident.description}
+            onChange={(e) => handleChange(e, index, 'safetyIncidents')}
+            placeholder="Safety incident description"
+          />
+          <input
+            type="text"
+            name="severity"
+            value={incident.severity}
+            onChange={(e) => handleChange(e, index, 'safetyIncidents')}
+            placeholder="Safety incident severity"
+          />
+        </div>
+      ))}
       {/* Communications */}
-      <input
-        type="text"
-        name="communications"
-        value={formData.communications}
-        onChange={handleChange}
-        placeholder="Communications"
-      />
+      {formData.communications.map((communication, index) => (
+        <div key={index}>
+          <input
+            type="text"
+            name="messageContent"
+            value={communication.messageContent}
+            onChange={(e) =>
+              handleChange(e, index, 'communications')
+            }
+            placeholder="Communication text"
+          />
+          <input
+            type="text"
+            name="messageType"
+            value={communication.messageType}
+            onChange={(e) =>
+              handleChange(e, index, 'communications')
+            }
+            placeholder="Communication text"
+          />
+        </div>
+      ))}
       {/* Submit button */}
-      <button type="submit">Save Daily Log</button>
-    </form>
+      <Button type="submit" className="mt-3">
+        Save Daily Log
+      </Button>
+    </Form>
+  </Container>
   );
 };
 

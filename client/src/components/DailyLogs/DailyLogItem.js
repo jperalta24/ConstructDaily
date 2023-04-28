@@ -1,6 +1,30 @@
 import React from 'react';
+import { Card, ListGroup } from 'react-bootstrap';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faHardHat,
+  faWrench,
+  faTools,
+  faCloudSun,
+  faClock,
+  faExclamationTriangle,
+  faCommentAlt,
+} from '@fortawesome/free-solid-svg-icons';
+
+dayjs.extend(utc);
+
+// import { parseISO, format, isValid } from 'date-fns';
 
 const DailyLogItem = ({ dailyLog }) => {
+  console.log(dayjs())
+  const trimmedDate = Math.floor(dailyLog.date/1000)
+  console.log(trimmedDate)
+  const formattedDate = dayjs(trimmedDate).format('MMMM D, YYYY');
+  // console.log('')
   const {
     workCompleted,
     materialsUsed,
@@ -11,54 +35,65 @@ const DailyLogItem = ({ dailyLog }) => {
     communications,
   } = dailyLog;
 
+  console.log(dailyLog);
   return (
-    <div className="daily-log-item">
-      <h3>{dailyLog.date}</h3>
-      <h4>Work Completed:</h4>
-      <ul>
-        {workCompleted.map((item, index) => (
-          <li key={index}>{item.workerName}: {item.taskDescription} ({item.hoursWorked} hours)</li>
-        ))}
-      </ul>
-      <h4>Materials Used:</h4>
-      <ul>
-        {materialsUsed.map((item, index) => (
-          <li key={index}>{item.materialName} ({item.quantity})</li>
-        ))}
-      </ul>
-      <h4>Equipment Used:</h4>
-      <ul>
-        {equipmentUsed.map((item, index) => (
-          <li key={index}>{item.equipmentName} ({item.hoursUsed} hours)</li>
-        ))}
-      </ul>
-      <h4>Weather Conditions:</h4>
-      <p>
-        Temperature: {weather.temperature}°F, Conditions: {weather.conditions}
-      </p>
-      <h4>Delays:</h4>
-      <ul>
-        {delays.map((item, index) => (
-          <li key={index}>{item.description} (Duration: {item.duration} hours)</li>
-        ))}
-      </ul>
-      <h4>Safety Incidents:</h4>
-      <ul>
-        {safetyIncidents.map((item, index) => (
-          <li key={index}>{item.description} (Severity: {item.severity})</li>
-        ))}
-      </ul>
-      <h4>Communications:</h4>
-      <ul>
-        {communications.map((item, index) => (
-          <li key={index}>{item.messageType}: {item.messageContent}</li>
-        ))}
-      </ul>
-    </div>
+    <Card className="daily-log-item mb-4 construction-theme">
+      <Card.Header as="h3">{formattedDate}</Card.Header>
+      <Card.Body>
+        <Card.Title as="h4"><FontAwesomeIcon icon={faHardHat} /> Work Completed:</Card.Title>
+        <ListGroup>
+          {workCompleted.map((item, index) => (
+            <ListGroup.Item key={index}>{item.workerName}: {item.taskDescription} ({item.hoursWorked} hours)</ListGroup.Item>
+          ))}
+        </ListGroup>
+
+        <Card.Title as="h4" className="mt-3"><FontAwesomeIcon icon={faWrench} /> Materials Used:</Card.Title>
+        <ListGroup>
+          {materialsUsed.map((item, index) => (
+            <ListGroup.Item key={index}>{item.materialName} ({item.quantity})</ListGroup.Item>
+          ))}
+        </ListGroup>
+
+        <Card.Title as="h4" className="mt-3"><FontAwesomeIcon icon={faTools} /> Equipment Used:</Card.Title>
+        <ListGroup>
+          {equipmentUsed.map((item, index) => (
+            <ListGroup.Item key={index}>{item.equipmentName} ({item.hoursUsed} hours)</ListGroup.Item>
+          ))}
+        </ListGroup>
+
+        <Card.Title as="h4" className="mt-3"><FontAwesomeIcon icon={faCloudSun} /> Weather Conditions:</Card.Title>
+        <Card.Text>
+          Temperature: {weather.temperature}°F, Conditions: {weather.conditions}
+        </Card.Text>
+
+        <Card.Title as="h4" className="mt-3"><FontAwesomeIcon icon={faClock} /> Delays:</Card.Title>
+        <ListGroup>
+          {delays.map((item, index) => (
+            <ListGroup.Item key={index}>{item.description} (Duration: {item.duration} hours)</ListGroup.Item>
+          ))}
+          </ListGroup>
+
+        <Card.Title as="h4" className="mt-3"><FontAwesomeIcon icon={faExclamationTriangle} /> Safety Incidents:</Card.Title>
+        <ListGroup>
+          {safetyIncidents.map((item, index) => (
+            <ListGroup.Item key={index}>{item.description} (Severity: {item.severity})</ListGroup.Item>
+          ))}
+        </ListGroup>
+
+        <Card.Title as="h4" className="mt-3"><FontAwesomeIcon icon={faCommentAlt} /> Communications:</Card.Title>
+        <ListGroup>
+          {communications.map((item, index) => (
+            <ListGroup.Item key={index}>{item.messageType}: {item.messageContent}</ListGroup.Item>
+          ))}
+        </ListGroup>
+      </Card.Body>
+    </Card>
   );
 };
 
+
 export default DailyLogItem;
+
 
 
 
