@@ -5,18 +5,15 @@ import AuthService from "../../utils/auth";
 import { Navigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-
 const LoginForm = (props) => {
   // const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [signIn] = useMutation(SIGN_IN);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log("Submitting form...");
-
     try {
       const { data } = await signIn({ variables: { email, password } });
       AuthService.login(data.signIn.token);
@@ -28,7 +25,6 @@ const LoginForm = (props) => {
       console.error(err);
     }
   };
-
   return (
     <div className="login-container">
       <div className="login-page">
@@ -43,7 +39,6 @@ const LoginForm = (props) => {
               placeholder="Enter email"
             />
           </Form.Group>
-
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
@@ -53,7 +48,6 @@ const LoginForm = (props) => {
               placeholder="Password"
             />
           </Form.Group>
-
           <Button variant="primary" type="submit" id="login-btn">
             Login
           </Button>
@@ -62,5 +56,4 @@ const LoginForm = (props) => {
     </div>
   );
 };
-
 export default LoginForm;

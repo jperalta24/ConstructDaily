@@ -17,51 +17,47 @@ const MyNav = () => {
   };
   return (
     <div className='navbar'>
-      <Container className="homepage-container">
-      <Navbar>
-        <ul className='navbar-items'>
-          <li className='items' id='home'>
-          <Button>
-            <Link to="/" className="active">
-              Home
+    <Navbar>
+      <ul className='navbar-items'>
+        <li className='items' id='home'>
+          <Link to="/" className="active">
+            Home
+          </Link>
+        </li>
+        <li className='items' id='projects'>
+          <Link to="/projects" className="active">
+            Projects
+          </Link>
+        </li>
+        <li>
+          <Link to="/dailylog" className="active">
+            Daily Log
+          </Link>
+        </li>
+      </ul>
+      <div>
+        {Auth.loggedIn() ? (
+          <>
+            <Link className="btn btn-lg btn-info m-2" to="/profile">
+              {Auth.getProfile().data.name}
             </Link>
-            </Button>
-          </li>
-          <li className='items' id='projects'>
-            <Link to="/projects" className="active">
-              Projects
+            <button className="btn btn-lg btn-light m-2" onClick={logout}>
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <Link className="btn btn-lg btn-info m-2" to="/login">
+              Login
             </Link>
-          </li>
-          <li>
-            <Link to="/dailylog" className="active">
-              Daily Log
+            <Link className="btn btn-lg btn-light m-2" to="/signup">
+              Signup
             </Link>
-          </li>
-        </ul>
-        <div>
-          {Auth.loggedIn() ? (
-            <>
-              <Link className="btn btn-lg btn-info m-2" to="/profile">
-                {Auth.getProfile().data.name}
-              </Link>
-              <button className="btn btn-lg btn-light m-2" onClick={logout}>
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <Link className="btn btn-lg btn-info m-2" to="/login">
-                Login
-              </Link>
-              <Link className="btn btn-lg btn-light m-2" to="/signup">
-                Signup
-              </Link>
-            </>
-          )}
-        </div>
-      </Navbar>
-      </Container>
-    </div>
+          </>
+        )}
+      </div>
+    </Navbar>
+  </div>
   );
 };
 
