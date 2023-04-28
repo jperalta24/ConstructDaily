@@ -8,8 +8,9 @@ const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 const resolvers = {
   Query: {
-    projects: async (_, { userId }) => {
-      const user = await User.findById(userId).populate("projects");
+    projects: async (_, args, context) => {
+      console.log("user")
+      const user = await User.findOne({_id: context.user._id}).populate("projects");
       return user.projects;
     },
     project: async (_, { id }) => {
