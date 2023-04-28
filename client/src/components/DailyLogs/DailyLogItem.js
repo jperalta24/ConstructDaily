@@ -1,6 +1,9 @@
 import React from 'react';
 import { Card, ListGroup } from 'react-bootstrap';
-import moment from 'moment';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHardHat,
@@ -12,10 +15,16 @@ import {
   faCommentAlt,
 } from '@fortawesome/free-solid-svg-icons';
 
+dayjs.extend(utc);
 
 // import { parseISO, format, isValid } from 'date-fns';
 
 const DailyLogItem = ({ dailyLog }) => {
+  console.log(dayjs())
+  const trimmedDate = Math.floor(dailyLog.date/1000)
+  console.log(trimmedDate)
+  const formattedDate = dayjs(trimmedDate).format('MMMM D, YYYY');
+  // console.log('')
   const {
     workCompleted,
     materialsUsed,
@@ -26,9 +35,10 @@ const DailyLogItem = ({ dailyLog }) => {
     communications,
   } = dailyLog;
 
+  console.log(dailyLog);
   return (
     <Card className="daily-log-item mb-4 construction-theme">
-      <Card.Header as="h3">{dailyLog.date}</Card.Header>
+      <Card.Header as="h3">{formattedDate}</Card.Header>
       <Card.Body>
         <Card.Title as="h4"><FontAwesomeIcon icon={faHardHat} /> Work Completed:</Card.Title>
         <ListGroup>

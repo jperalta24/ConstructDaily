@@ -66,7 +66,7 @@ type Project {
 }
 
 type Query {
-  projects(userId: ID!): [Project]
+  projects: [Project]
   project(_id: ID!): Project
   users: [User]
   user(name: String!): User
@@ -80,7 +80,7 @@ type Mutation {
   updateUser(_id: ID!, name: String, email: String, role: String): User
   deleteUser(_id: ID!): User
   createProject(name: String!, userId: ID!): Project
-  updateProject(_id: ID!, name: String): Project
+  updateProject(_id: ID!, name: String!): Project
   deleteProject(_id: ID!): Project
   addUserToProject(userId: ID!, projectId: ID!): Project
   removeUserFromProject(userId: ID!, projectId: ID!): Project

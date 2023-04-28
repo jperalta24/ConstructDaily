@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
-
+import dayjs from 'dayjs';
 // const today = new Date().toISOString().split('T')[0];
 const DailyLogForm = ({ onSubmit, project }) => {
   const [formData, setFormData] = useState({
@@ -16,6 +16,7 @@ const DailyLogForm = ({ onSubmit, project }) => {
 
   const handleSimpleChange = (e) => {
     const { name, value } = e.target;
+    console.log(value)
     setFormData({ ...formData, [name]: value });
   };
   

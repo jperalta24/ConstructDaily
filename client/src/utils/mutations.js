@@ -70,8 +70,8 @@ mutation CreateProject($name: String!, $userId: ID!) {
 `;
 
 export const UPDATE_PROJECT = gql`
-mutation UpdateProject($_id: ID!, $name: String, $userId: ID) {
-  updateProject(_id: $_id, name: $name, userId: $userId) {
+mutation UpdateProject($_id: ID!, $name: String! ) {
+  updateProject(_id: $_id, name: $name) {
     _id
     name
     users {

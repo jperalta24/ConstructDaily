@@ -182,3 +182,13 @@ a {
 .construction-theme-form .form-control {
   margin-bottom: 0.5rem;
 }
+.project-container {
+  display: grid;
+  justify-content: center;
+  border: 10px solid black;
+  border-radius: 50px;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 100px;
+}
