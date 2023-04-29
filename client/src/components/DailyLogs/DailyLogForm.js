@@ -45,9 +45,11 @@ const DailyLogForm = ({ onSubmit, project }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const dateISO = new Date(formData.date).toISOString();
 
     const updatedFormData = {
       ...formData,
+      date: dateISO,
       workCompleted: formData.workCompleted.map((item) => ({
         ...item,
         hoursWorked: parseInt(item.hoursWorked, 10) || 0,

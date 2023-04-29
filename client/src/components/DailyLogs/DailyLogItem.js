@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, ListGroup } from 'react-bootstrap';
-import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc';
+// import dayjs from 'dayjs';
+// import utc from 'dayjs/plugin/utc';
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,16 +15,17 @@ import {
   faCommentAlt,
 } from '@fortawesome/free-solid-svg-icons';
 
-dayjs.extend(utc);
+
+// dayjs.extend(utc);
 
 // import { parseISO, format, isValid } from 'date-fns';
 
 const DailyLogItem = ({ dailyLog }) => {
-  console.log(dayjs())
-  const trimmedDate = Math.floor(dailyLog.date/1000)
-  console.log(trimmedDate)
-  const formattedDate = dayjs(trimmedDate).format('MMMM D, YYYY');
-  // console.log('')
+
+  const formattedDate = dailyLog.date;
+
+
+
   const {
     workCompleted,
     materialsUsed,
@@ -38,7 +39,7 @@ const DailyLogItem = ({ dailyLog }) => {
   console.log(dailyLog);
   return (
     <Card className="daily-log-item mb-4 construction-theme">
-      <Card.Header as="h3">{formattedDate}</Card.Header>
+     <Card.Header as="h3">{formattedDate}</Card.Header>
       <Card.Body>
         <Card.Title as="h4"><FontAwesomeIcon icon={faHardHat} /> Work Completed:</Card.Title>
         <ListGroup>
@@ -98,8 +99,3 @@ export default DailyLogItem;
 
 
 
-// Your DailyLogItem.js will be a React component responsible for displaying individual daily log entries. This component will receive a daily log object as a prop and render its details, such as work completed, materials used, equipment used, weather conditions, delays, safety incidents, and communications. Here's a basic example of what the DailyLogItem.js component could look like:
-
-// In this example, the DailyLogItem component takes a dailyLog prop, which represents an individual daily log object containing details such as work completed, materials used, equipment used, weather conditions, delays, safety incidents, and communications. The component renders these details in a structured format.
-
-// You can customize this component as needed by adding or modifying the displayed details, implementing additional functionality (e.g., editing or deleting daily log entries), or styling the component elements.

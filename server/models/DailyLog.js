@@ -1,7 +1,10 @@
 const mongoose = require("mongoose");
+const dateFormat = require('../utils/dateFormat')
 
 const dailyLogSchema = new mongoose.Schema({
-  date: { type: Object, required: true },
+  date: { type: String,
+    default: () => new Date().toISOString(),
+    get: (dateISO) => dateFormat(new Date(dateISO).getTime()), },
   project: { type: mongoose.Schema.Types.ObjectId, ref: "Project" },
   workCompleted: [{
     workerName: String,
