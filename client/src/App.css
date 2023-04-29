@@ -13,6 +13,40 @@
   }
 }
 
+:root {
+  --primary-color: #FFC107;
+  --secondary-color: #FF5722;
+  --tertiary-color: #2196F3;
+  --light-gray: #F5F5F5;
+  --dark-gray: #333333;
+}
+
+/* Apply colors */
+body {
+  background-color: var(--light-gray);
+  color: var(--dark-gray);
+  font-family: 'Roboto', sans-serif;
+
+}
+
+a {
+  color: var(--tertiary-color);
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+button {
+  background-color: var(--primary-color);
+  color: var(--dark-gray);
+  border: none;
+}
+
+button:hover {
+  background-color: var(--secondary-color);
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -37,9 +71,10 @@
   }
 }
 
-body,html {
+
+/* body,html {
   background-color: #857f7f44;
-}
+} */
 
 /* .project-page {
   display: flex;
@@ -161,7 +196,7 @@ a {
 
 
 .construction-theme {
-  background-color: #f7f7f7;
+  background-color: var(--light-gray);
   padding: 1rem;
   border: 1px solid #ccc;
 }
@@ -192,3 +227,15 @@ a {
   margin-left: auto;
   margin-top: 100px;
 }
+
+
+.scrollable-column {
+  max-height: 60vh; /* Adjust the height as needed */
+  overflow-y: auto;
+}
+
+/* Make the scrollbar invisible */
+.scrollable-column::-webkit-scrollbar {
+  width: 0;
+}
+

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
-import dayjs from 'dayjs';
-// const today = new Date().toISOString().split('T')[0];
+
 const DailyLogForm = ({ onSubmit, project }) => {
   const [formData, setFormData] = useState({
     date: '',
@@ -220,7 +219,7 @@ const DailyLogForm = ({ onSubmit, project }) => {
             onChange={(e) =>
               handleChange(e, index, 'communications')
             }
-            placeholder="Communication text"
+            placeholder="Message Content"
           />
           <input
             type="text"
@@ -229,7 +228,7 @@ const DailyLogForm = ({ onSubmit, project }) => {
             onChange={(e) =>
               handleChange(e, index, 'communications')
             }
-            placeholder="Communication text"
+            placeholder="Message Type"
           />
         </div>
       ))}
