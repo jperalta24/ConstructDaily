@@ -25,9 +25,9 @@ function MyNav({ links }) {
           <Link className="btn btn-lg btn-info m-2" to="/projects">
             ProjectPage
           </Link>
-          <Link className="btn btn-lg btn-info m-2" to="/daily-logs">
+          {/* <Link className="btn btn-lg btn-info m-2" to="/dailylog">
             DailyLogPage
-          </Link>
+          </Link> */}
           <Link className="btn btn-lg btn-info m-2" to="/" onClick={logout}>
             Logout
           </Link>

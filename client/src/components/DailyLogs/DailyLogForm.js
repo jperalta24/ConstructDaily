@@ -36,13 +36,7 @@ const DailyLogForm = ({ onSubmit, project }) => {
       setFormData({ ...formData, [fieldName]: updatedField });
     }
   };
-  // const handleChange = (e, index, fieldName) => {
-  //   const { name, value } = e.target;
-  //   const updatedField = [...formData[fieldName]];
-  //   updatedField[index] = { ...updatedField[index], [name]: value };
-  //   setFormData({ ...formData, [fieldName]: updatedField });
-  // };
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     const dateISO = new Date(formData.date).toISOString();
@@ -74,12 +68,7 @@ const DailyLogForm = ({ onSubmit, project }) => {
 
     onSubmit(updatedFormData, project);
   };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   onSubmit(formData, project);
-  // };
-
+  
   return (
     <Container className="construction-theme-form mt-4">
     <Form onSubmit={handleSubmit}>

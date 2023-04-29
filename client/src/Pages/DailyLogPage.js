@@ -34,13 +34,11 @@ const DisplayLogPage = ({ projectId }) => {
 
   return (
     <Container className="construction-theme">
-      <h1>Daily Log Page</h1>
+      {/* <h1>Daily Log Page</h1> */}
       <Row>
         <Col>
           <DailyLogList projectId={projectId} />
         </Col>
-      </Row>
-      <Row>
         <Col>
           <Button
             onClick={() => setShowForm(true)}
@@ -52,6 +50,8 @@ const DisplayLogPage = ({ projectId }) => {
             <DailyLogForm onSubmit={handleDailyLogSubmit} project={projectId} />
           )}
         </Col>
+      </Row>
+      <Row>
       </Row>
     </Container>
   );
