@@ -115,6 +115,15 @@ button:hover {
   background-color: #1DB954;
 }
 
+.btn-custom {
+  border: 2px solid black;
+  border-width: medium;
+  background-color: #605d5d44;
+  color: white;
+  margin: 5px;
+  
+}
+
 Button {
   margin-right: 10px;
 }
