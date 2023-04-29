@@ -4,6 +4,9 @@ export const DAILY_LOGS_QUERY = gql`
   query GetDailyLogs($projectId: ID!) {
     dailyLogs(projectId: $projectId) {
       _id
+      project {
+        name
+      }
       date
       workCompleted {
         workerName

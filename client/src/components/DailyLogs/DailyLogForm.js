@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
-import dayjs from 'dayjs';
-// const today = new Date().toISOString().split('T')[0];
+
 const DailyLogForm = ({ onSubmit, project }) => {
   const [formData, setFormData] = useState({
     date: '',
@@ -36,18 +35,14 @@ const DailyLogForm = ({ onSubmit, project }) => {
       setFormData({ ...formData, [fieldName]: updatedField });
     }
   };
-  // const handleChange = (e, index, fieldName) => {
-  //   const { name, value } = e.target;
-  //   const updatedField = [...formData[fieldName]];
-  //   updatedField[index] = { ...updatedField[index], [name]: value };
-  //   setFormData({ ...formData, [fieldName]: updatedField });
-  // };
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
+    const dateISO = new Date(formData.date).toISOString();
 
     const updatedFormData = {
       ...formData,
+      date: dateISO,
       workCompleted: formData.workCompleted.map((item) => ({
         ...item,
         hoursWorked: parseInt(item.hoursWorked, 10) || 0,
@@ -72,12 +67,7 @@ const DailyLogForm = ({ onSubmit, project }) => {
 
     onSubmit(updatedFormData, project);
   };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   onSubmit(formData, project);
-  // };
-
+  
   return (
     <Container className="construction-theme-form mt-4">
     <Form onSubmit={handleSubmit}>
@@ -229,7 +219,7 @@ const DailyLogForm = ({ onSubmit, project }) => {
             onChange={(e) =>
               handleChange(e, index, 'communications')
             }
-            placeholder="Communication text"
+            placeholder="Message Content"
           />
           <input
             type="text"
@@ -238,7 +228,7 @@ const DailyLogForm = ({ onSubmit, project }) => {
             onChange={(e) =>
               handleChange(e, index, 'communications')
             }
-            placeholder="Communication text"
+            placeholder="Message Type"
           />
         </div>
       ))}

@@ -4,7 +4,7 @@ import DailyLogForm from '../components/DailyLogs/DailyLogForm';
 import DailyLogList from '../components/DailyLogs/DailyLogList';
 import { DAILY_LOGS_QUERY } from '../utils/queries';
 import { CREATE_DAILYLOG } from '../utils/mutations';
-import { Container, Button, Row, Col } from 'react-bootstrap';
+import { Container, Button, Row, Col,} from 'react-bootstrap';
 
 
 const DisplayLogPage = ({ projectId }) => {
@@ -34,13 +34,11 @@ const DisplayLogPage = ({ projectId }) => {
 
   return (
     <Container className="construction-theme">
-      <h1>Daily Log Page</h1>
+      <h2 className='daily-log'>Daily Logs</h2>
       <Row>
-        <Col>
+        <Col className="scrollable-column">
           <DailyLogList projectId={projectId} />
         </Col>
-      </Row>
-      <Row>
         <Col>
           <Button
             onClick={() => setShowForm(true)}
@@ -53,8 +51,10 @@ const DisplayLogPage = ({ projectId }) => {
           )}
         </Col>
       </Row>
+      <Row></Row>
     </Container>
   );
+  
 };
 
 export default DisplayLogPage;

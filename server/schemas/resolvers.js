@@ -24,7 +24,7 @@ const resolvers = {
     },
     dailyLogs: async (_, { projectId }) => {
       console.log('projectId:', projectId);
-      const logs = await DailyLog.find({ project: projectId });
+      const logs = await DailyLog.find({ project: projectId }).populate('project');
       console.log('logs:', logs); // Log the logs array
       return logs;
       // return await DailyLog.find({ project: projectId });
