@@ -39,7 +39,7 @@ const App = () => {
     <ApolloProvider client={client}>
       <Router>
           <MyNav/>
-        <Container>
+        {/* <Container> */}
           {/* <Row>
             <Col> */}
               <Routes>
@@ -52,7 +52,7 @@ const App = () => {
               </Routes>
             {/* </Col>
           </Row> */}
-        </Container>
+        {/* </Container> */}
         <Footer/>
       </Router>
     </ApolloProvider>

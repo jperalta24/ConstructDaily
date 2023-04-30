@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col, Card, Image, ListGroup, ListGroupItem } from "react-bootstrap";
 import { UserProfile } from "../components/Users";
 import "../App.css";
 import AuthService from "../utils/auth"; // Import AuthService
@@ -7,82 +7,62 @@ import ConstructionImage from "../images/home image.png";
 
 const styles = {
     container: {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      padding: 20,
-      backgroundColor: 'white',
-      color: 'black',
-      maxWidth: 800,
-      margin: 'auto',
-      textAlign: 'center',
-      border: '1px solid gray',
-      borderRadius: 10,
-      boxShadow: '2px 2px 4px rgba(0,0,0,0.3)',
-      // media query for screens smaller than 768px
-      '@media (max-width: 768px)': {
-        flexDirection: 'column-reverse',
-      },
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        // minHeight: '100vh', // To make sure it covers the full viewport height
+        // media query for screens smaller than 768px
+        '@media (maxWidth: 768px)': {
+            flexDirection: 'column-reverse',
+        },
     },
     // more styles here
-  };
+};
 
 const HomePage = () => {
-  return (
-    <div>
-
-        <Container id="homepage" style={styles.container}>
-            <Row className="justify-content-center">
-                <Col>
-                    <div className="homepage-container">
-                        <div id="welcome">
-                            <h1>Welcome to Construct Daily </h1>
-                        </div>
-                    </div>
-                </Col>
-            </Row>
-            <Row className="justify-content-center">
-                <Col>
-                    <div className="logged-in">
-                        <div>
-                            {AuthService.loggedIn() ? (
-                                <UserProfile />
-                            ) : (
-                                // comment
-                                <div className="not-logged-in-container">
-                                    <div className="card mb-3">
-                                        <div className="card-body">
-                                            
-                                            <p  className="card-text" style={{ fontWeight: 'bold' }}>
-                                             The ultimate solution for construction project managers. Our web application streamlines the daily logging process, making it easier than ever to manage and monitor project progress, resource usage, safety incidents, and team communication.
-
-With ConstructDaily, you can create and manage multiple construction projects, assign users to projects, and track progress in real-time. Our user-friendly interface makes it easy to create and update daily logs for each project, including details on work completed by each worker, materials used, equipment usage, weather conditions, and more.
-
-Whether you're working on a small renovation project or a large-scale construction site, ConstructDaily helps you optimize resource allocation and improve project efficiency. With real-time data entry, you can stay on top of project progress and make informed decisions based on up-to-date information.
-
-Start using ConstructDaily today and experience the benefits of a comprehensive, user-focused platform for effectively managing your construction projects.
-                                            </p>
-                                            <p className="card-text">
-                                                <small className="text-body-secondary">
-                                                    
-                                                </small>
-                                            </p>
-                                        </div>
-                                        <img src={ConstructionImage} className="card-img-top" alt="..." />
+    return (
+        <div>
+            <Container fluid id="homepage" style={styles.container} className="no-padding-left" >
+                <Row className="">
+                    <Col xs={5} className="mt-">
+                        <Image src={ConstructionImage} className="bg-transparent img-fluid" alt="..." fluid />
+                    </Col>
+                    <Col>
+                        <div className="logged-in mt- mx-">
+                            <div>
+                                {AuthService.loggedIn() ? (
+                                    <UserProfile />
+                                ) : (
+                                    // comment
+                                    <div className="mt-5 pt-4" style={{ fontWeight: 'bold' }}>
+                                        <h2 className="custom-h2">Introducing ConstructDaily:</h2>
+                                        <ul className="custom-list">
+                                            <li>
+                                                The premier web application designed specifically for construction project managers. Our platform revolutionizes daily log management, making it seamless to oversee project progress, resource allocation, safety incidents, and team communication.
+                                            </li>
+                                            <br />
+                                            <li>
+                                                With ConstructDaily, you can effortlessly establish and supervise multiple construction projects, delegate users, and monitor progress in real-time. Our intuitive interface simplifies the process of creating and updating daily logs for every project, encompassing details such as individual worker tasks, materials utilized, equipment usage, weather conditions, and more.
+                                            </li>
+                                            <br />
+                                            <li>
+                                                Whether you're tackling a small-scale renovation or a large construction site, ConstructDaily empowers you to optimize resources and enhance project efficiency. Our real-time data entry ensures you remain well-informed of project developments, allowing you to make strategic decisions based on the latest information.
+                                            </li>
+                                            <br />
+                                            <li>
+                                                Upgrade your construction project management experience with ConstructDaily and discover the benefits of a comprehensive, user-centric platform designed to streamline your operations.
+                                            </li>
+                                        </ul>
                                     </div>
-                                </div>
-                            )}
+
+                                )}
+                            </div>
                         </div>
-                    </div>
-                </Col>
-            </Row>
-        </Container>
-
-       
-
-    </div>
-  );
+                    </Col>
+                </Row>
+            </Container>
+        </div>
+    );
 };
 
 export default HomePage;
