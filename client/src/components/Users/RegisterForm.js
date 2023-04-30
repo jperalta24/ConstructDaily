@@ -49,7 +49,7 @@ const RegisterForm = (props) => {
     <Form className='mt-4' onSubmit={handleSubmit}>
 
       <Form.Group className="mb-3" controlId="formBasicName">
-        <Form.Label>Username</Form.Label>
+        <Form.Label>Name</Form.Label>
         <Form.Control value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Enter Name" />
 
       </Form.Group>
