@@ -43,6 +43,12 @@ button {
   border: none;
 }
 
+.nav-btn{
+  background-color: none;
+  color: var(--primary-color);
+  border: none;
+}
+
 button:hover {
   background-color: var(--secondary-color);
 }
@@ -71,23 +77,9 @@ button:hover {
   }
 }
 
-
-/* body,html {
-  background-color: #857f7f44;
-} */
-
-/* .project-page {
-  display: flex;
-  justify-content: center;
-} */
-
-.navbar {
-  display: flex;
-  align-items: center;
-  background-color: #2D73A7;
+.nav-container {
+  background-color: var(--tertiary-color);
   color: #333333;
-  height: 100px;
-  width: 100%;
 }
 
 .logged-in {
@@ -115,24 +107,10 @@ button:hover {
   background-color: #1DB954;
 }
 
-.btn-custom {
-  border: 2px solid black;
-  border-width: medium;
-  background-color: #605d5d44;
-  color: white;
-  margin: 5px;
-  
-}
-
 Button {
   margin-right: 10px;
 }
 
-.navbar-items {
-  display: flex;
-  flex-direction: row;
-  list-style: none;
-}
 
 .items {
   display: flex;
@@ -145,39 +123,33 @@ a {
 }
 
 .login-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 5px solid black;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  border: 2px solid black;
   border-radius: 30px;
-  height: 400px;
-  width: 60%;
-  background-color: #2D73A7;
+  background-color: var(--tertiary-color);
   margin-top: 150px;
 }
 
 .login-container {
   display: flex;
   justify-content: center;
-  height: 100rem;
+  height: 60rem;
   background-image: url(./images/construction\ background.jpg);
   background-repeat: repeat;
   background-position: center;
+  color: var(--dark-gray);
 }
+.login-page form label {
+  width: 100%;
+}
+
 
 #email {
   display: flex;
   width: 50rem;
 }
-
-/* body {
-  height: 100%;
-  background-image: url(./images/construction\ background.jpg);
-  background-repeat: repeat;
-  background-position: center;
-  background-size: cover;
-  color: darkgray;
-} */
 
 #login-btn:hover {
   background-color: #F6A833;
@@ -188,6 +160,7 @@ a {
   background-color: #1DB954;
   transform: scale(1.2);
 }
+
 
 .construction-theme {
   background-color: #f7f7f7;

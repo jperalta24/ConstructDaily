@@ -33,31 +33,14 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const links = [
-  { label: "Home", link: "/" },
-  { label: "Projects", link: "/projects" },
-  { label: "Daily Log", link: "/dailylog" },
-  { label: "Login", link: "/login" },
-  { label: "Profile", link: "/profile" },
-  { label: "Signup", link: "/registerForm" },
-];
-
 const App = () => {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <Navbar>
-          <MyNav
-            link={links.map(({ label, link }) => (
-              <Link key={link} to={link}>
-                {label}
-              </Link>
-            ))}
-          />
-        </Navbar>
+          <MyNav/>
         <Container>
-          <Row>
-            <Col>
+          {/* <Row>
+            <Col> */}
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/projects" element={<ProjectPage />} />
@@ -66,8 +49,8 @@ const App = () => {
                 <Route path="/profile" element={<UserProfile />} />
                 <Route path="/signup" element={<RegisterForm />} />
               </Routes>
-            </Col>
-          </Row>
+            {/* </Col>
+          </Row> */}
         </Container>
       </Router>
     </ApolloProvider>
