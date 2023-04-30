@@ -6,6 +6,29 @@ import { DAILY_LOGS_QUERY } from '../utils/queries';
 import { CREATE_DAILYLOG } from '../utils/mutations';
 import { Container, Button, Row, Col,} from 'react-bootstrap';
 
+const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+    backgroundColor: 'white',
+    color: 'black',
+    maxWidth: 800,
+    margin: 'auto',
+    textAlign: 'center',
+    border: '1px solid gray',
+    borderRadius: 10,
+    boxShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+    // media query for screens smaller than 768px
+    '@media (max-width: 768px)': {
+      flexDirection: 'column-reverse',
+    },
+  },
+  // more styles here
+};
+
 
 const DisplayLogPage = ({ projectId }) => {
   const [showForm, setShowForm] = useState(false);
@@ -33,7 +56,7 @@ const DisplayLogPage = ({ projectId }) => {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <Container className="construction-theme">
+    <Container className="construction-theme" style={styles.container}>
       <h2 className='daily-log'>Daily Logs</h2>
       <Row>
         <Col className="scrollable-column">
