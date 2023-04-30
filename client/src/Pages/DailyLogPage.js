@@ -29,7 +29,7 @@ const styles = {
 
 const DisplayLogPage = ({ projectId }) => {
   const [showForm, setShowForm] = useState(false);
-  const { loading, error, data } = useQuery(DAILY_LOGS_QUERY, {
+  const { loading, error, data, refetch} = useQuery(DAILY_LOGS_QUERY, {
     variables: { projectId },
   });
 
@@ -43,6 +43,7 @@ const DisplayLogPage = ({ projectId }) => {
       const { data } = await createDailyLog({ variables: { ...dailyLogData, projectId } });
       // No need to update the local state as the Apollo cache will handle it automatically
       setShowForm(false);
+      refetch();
     } catch (error) {
       console.error("Error creating daily log:", error);
     }

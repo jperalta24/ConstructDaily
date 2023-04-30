@@ -4,14 +4,51 @@ import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 const DailyLogForm = ({ onSubmit, project }) => {
   const [formData, setFormData] = useState({
     date: '',
-    workCompleted: [{}],
-    materialsUsed: [{}],
-    equipmentUsed: [[]],
-    weather: [[]],
-    delays: [[]],
-    safetyIncidents: [[]],
-    communications: [{}],
+    workCompleted: [
+      {
+        taskDescription: '',
+        hoursWorked: '',
+        workerName: '',
+      },
+    ],
+    materialsUsed: [
+      {
+        materialName: '',
+        quantity: '',
+      },
+    ],
+    equipmentUsed: [
+      {
+        equipmentName: '',
+        hoursUsed: '',
+      },
+    ],
+    weather: [
+      {
+        conditions: '',
+        temperature: '',
+      },
+    ],
+    delays: [
+      {
+        description: '',
+        duration: '',
+      },
+    ],
+    safetyIncidents: [
+      {
+        description: '',
+        severity: '',
+      },
+    ],
+    communications: [
+      {
+        messageContent: '',
+        messageType: '',
+      },
+    ],
   });
+  
 
   const handleSimpleChange = (e) => {
     const { name, value } = e.target;
