@@ -21,7 +21,7 @@ const styles = {
     borderRadius: 10,
     boxShadow: '2px 2px 4px rgba(0,0,0,0.3)',
     // media query for screens smaller than 768px
-    '@media (max-width: 768px)': {
+    '@media (maxWidth: 768px)': {
       flexDirection: 'column-reverse',
     },
   },

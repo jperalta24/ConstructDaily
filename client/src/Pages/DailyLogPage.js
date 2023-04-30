@@ -8,21 +8,18 @@ import { Container, Button, Row, Col,} from 'react-bootstrap';
 
 const styles = {
   container: {
-    display: 'flex',
+    // display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
-    backgroundColor: 'white',
+    // padding: 20,
+    // backgroundColor: 'white',
     color: 'black',
     maxWidth: 800,
     margin: 'auto',
     textAlign: 'center',
-    border: '1px solid gray',
-    borderRadius: 10,
-    boxShadow: '2px 2px 4px rgba(0,0,0,0.3)',
     // media query for screens smaller than 768px
-    '@media (max-width: 768px)': {
+    '@media (maxwidth: 768px)': {
       flexDirection: 'column-reverse',
     },
   },

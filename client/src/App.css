@@ -23,11 +23,25 @@
 
 /* Apply colors */
 body {
-  background-color: var(--light-gray);
+  background: linear-gradient(to bottom, #F5F5F5, #FFC107);
   color: var(--dark-gray);
   font-family: 'Roboto', sans-serif;
 
 }
+
+.background-image {
+  background-image: url('./images/home image.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.no-padding-left {
+  padding-left: 0;
+}
+
+
 
 a {
   color: var(--tertiary-color);
@@ -83,29 +97,15 @@ button:hover {
 }
 
 .logged-in {
-  display: flex;
-  justify-content: center;
-  border: 5px solid;
-  width: 100%;
-  margin-top: 10px;
+ padding-right: 0;
+ color: var(--secondary-color);
+ /* background-color: var(--primary-color); */
 }
 
 .footer-container {
   height: 50px;
-  margin-top: 10px;
-}
-
-.homepage-container {
-  width: 100%;
-  margin-top: 8.6px;
-  text-align: center;
-  border: 3px solid black;
-  border-radius: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  background: linear-gradient(
-    45deg, rgb(177, 177, 177),rgb(85, 85, 85)
-  );
+  margin-top: 35px;
+  padding-bottom: 0;
 }
 
 .option-btn:hover {
@@ -166,44 +166,18 @@ a {
   transform: scale(1.2);
 }
 
-
-.construction-theme {
-  background-color: #f7f7f7;
-  border: 1px solid #ccc;
-}
-
-.construction-theme h4 {
-  display: flex;
-  align-items: center;
-}
-
-.construction-theme h4 svg {
-  margin-right: 8px;
+.custom-list {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
 }
 
 
-.construction-theme {
-  background-color: var(--light-gray);
-  padding: 1rem;
-  border: 1px solid #ccc;
-}
-
-.construction-theme h1 {
-  margin-bottom: 1rem;
+.custom-h2 {
+  font-weight: bold;
+  color: var(--dark-gray)
 }
 
 
-.construction-theme-form {
-  background-color: #f7f7f7;
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.construction-theme-form .form-label,
-.construction-theme-form .form-control {
-  margin-bottom: 0.5rem;
-}
 .project-container {
   display: grid;
   justify-content: center;
@@ -213,6 +187,10 @@ a {
   margin-right: auto;
   margin-left: auto;
   margin-top: 100px;
+}
+
+.profile-page {
+  color: var(--secondary-color);
 }
 
 
@@ -226,3 +204,7 @@ a {
   width: 0;
 }
 
+.construction-theme-form {
+  width: 100%; /* You can adjust this value to fit your needs */
+  margin: 0 auto; /* Center the container */
+}

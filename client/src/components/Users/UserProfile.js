@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-// import React from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
+import { Container, Row, Col } from 'react-bootstrap';
 
 import { QUERY_USER, QUERY_ME } from '../../utils/queries';
-
 import Auth from '../../utils/auth';
 import ProjectList from '../Projects/ProjectList';
-
 
 const UserProfile = () => {
   const { name: userParam } = useParams();
@@ -20,11 +18,6 @@ const UserProfile = () => {
   });
 
   const user = data?.me || data?.user || {};
-  // navigate to personal profile page if username is yours
-  // if (Auth.loggedIn() && Auth.getProfile().data.name === userParam) {
-  //   return <Navigate to="/profile"/>;
-  // }
-
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -39,15 +32,16 @@ const UserProfile = () => {
   }
 
   return (
-    <div>
-    <div className="flex-row justify-center mb-3">
-      <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
-        Viewing {Auth.getProfile().data.name}'s Profile
-      </h2>
-      </div>
+    <Container>
+      <Row className="justify-content-center mb-3 profile-page">
+        <Col xs={12} className="text-center p-3 mb-5">
+          <h2>{Auth.getProfile().data.name}'s Profile</h2>
+        </Col>
+      </Row>
       {user._id && <ProjectList userId={user._id} />}
-    </div>
+    </Container>
   );
 };
+
 
 export default UserProfile;

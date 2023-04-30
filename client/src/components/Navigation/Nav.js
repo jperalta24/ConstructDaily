@@ -43,9 +43,6 @@ function MyNav({ links }) {
                   <Button className='nav-btn' variant="custom" border="primary" size="lg" href="/">
                     Home Page
                   </Button>
-                  <Button className='nav-btn' variant="custom" size="lg" href="/projects">
-                    Project Page
-                  </Button>
                   <Button className='nav-btn' variant="custom" size="lg" onClick={logout} href="#">
                     Logout
                   </Button>

@@ -243,15 +243,4 @@ const DailyLogForm = ({ onSubmit, project }) => {
 
 export default DailyLogForm;
 
-// In this example, DailyLogForm takes two props: onSubmit and project. 
-// The onSubmit prop should be a function that handles form submission and interacts with the backend using GraphQL mutations. 
-// The project prop represents the current project for which the daily log entry is being created or updated.
-
-// The component maintains its own state to store form data. 
-// As the user inputs data into the form fields, the handleChange function is called to update the state with the new data. When the form is submitted, the handleSubmit function is called to execute the onSubmit prop function with the form data and the project.
-
-// You can customize this form as needed by adding or modifying form fields, 
-// adding validation, or styling the form elements. The form can also be extended to handle more complex data types, such as arrays or nested objects, for fields like materials used or equipment used.
-
-
 
