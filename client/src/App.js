@@ -5,6 +5,7 @@ import ProjectPage from "./pages/ProjectPage";
 import DailyLogPage from "./pages/DailyLogPage";
 import { UserProfile, LoginForm, RegisterForm } from "./components/Users";
 import MyNav from "./components/Navigation/Nav";
+import Footer from "./components/Navigation/Footer";
 import {
   ApolloClient,
   InMemoryCache,
@@ -52,6 +53,7 @@ const App = () => {
             {/* </Col>
           </Row> */}
         </Container>
+        <Footer/>
       </Router>
     </ApolloProvider>
   );

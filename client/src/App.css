@@ -90,11 +90,16 @@ button:hover {
   margin-top: 10px;
 }
 
+.footer-container {
+  height: 50px;
+  margin-top: 10px;
+}
+
 .homepage-container {
   width: 100%;
   margin-top: 8.6px;
   text-align: center;
-  border: 5px solid black;
+  border: 3px solid black;
   border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
