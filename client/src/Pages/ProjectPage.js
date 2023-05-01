@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Container,
   Button,
   Row,
   Col
-} from 'react-bootstrap';
-import { useQuery } from '@apollo/client';
-import { PROJECTS_QUERY } from '../utils/queries';
-import {ProjectForm} from '../components/Projects';
-import ProjectList from '../components/Projects/ProjectList';
+} from "react-bootstrap";
+import { useQuery } from "@apollo/client";
+import { PROJECTS_QUERY } from "../utils/queries";
+import {ProjectForm} from "../components/Projects";
+import ProjectList from "../components/Projects/ProjectList";
 
 export default function ProjectPage () {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -44,7 +44,7 @@ export default function ProjectPage () {
       </Row>
       <Row>
         <Col>
-          <h2>{selectedProject ? 'Edit Project' : 'Create Project'}</h2>
+          <h2>{selectedProject ? "Edit Project" : "Create Project"}</h2>
         </Col>
       </Row>
       <Row>

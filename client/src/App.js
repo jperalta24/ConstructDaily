@@ -1,11 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import ProjectPage from "./pages/ProjectPage";
-import DailyLogPage from "./pages/DailyLogPage";
+import { HomePage, ProjectPage, DailyLogPage } from "./pages";
 import { UserProfile, LoginForm, RegisterForm } from "./components/Users";
-import MyNav from "./components/Navigation/Nav";
-import Footer from "./components/Navigation/Footer";
+import { MyNav, Footer } from "./components/Navigation";
 import {
   ApolloClient,
   InMemoryCache,
