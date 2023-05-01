@@ -65,9 +65,9 @@ const DailyLogItem = ({ dailyLog }) => {
           <Card.Title as="h4" className="mt-3"><FontAwesomeIcon icon={faCloudSun} /> Weather Conditions:</Card.Title>
           <ListGroup>
             {weather.map((item, index) => (
-             <ListGroupItem key={index}>{item.temperature}°F, (Conditions: {item.conditions})</ListGroupItem>
+              <ListGroupItem key={index}>{item.temperature}°F, (Conditions: {item.conditions})</ListGroupItem>
 
-             ))}
+            ))}
           </ListGroup>
 
           <Card.Title as="h4" className="mt-3"><FontAwesomeIcon icon={faClock} /> Delays:</Card.Title>
