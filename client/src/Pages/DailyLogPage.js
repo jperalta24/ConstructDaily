@@ -4,7 +4,7 @@ import DailyLogForm from '../components/DailyLogs/DailyLogForm';
 import DailyLogList from '../components/DailyLogs/DailyLogList';
 import { DAILY_LOGS_QUERY } from '../utils/queries';
 import { CREATE_DAILYLOG } from '../utils/mutations';
-import { Container, Button, Row, Col,} from 'react-bootstrap';
+import { Container, Button, Row, Col, } from 'react-bootstrap';
 
 const styles = {
   container: {
@@ -29,7 +29,7 @@ const styles = {
 
 const DisplayLogPage = ({ projectId }) => {
   const [showForm, setShowForm] = useState(false);
-  const { loading, error, data, refetch} = useQuery(DAILY_LOGS_QUERY, {
+  const { loading, error, data, refetch } = useQuery(DAILY_LOGS_QUERY, {
     variables: { projectId },
   });
 
@@ -39,7 +39,7 @@ const DisplayLogPage = ({ projectId }) => {
     try {
       console.log("Project ID:", projectId); // Log the projectId
       console.log("Daily Log Data:", dailyLogData); // Log the dailyLogData
-  
+
       const { data } = await createDailyLog({ variables: { ...dailyLogData, projectId } });
       // No need to update the local state as the Apollo cache will handle it automatically
       setShowForm(false);
@@ -48,7 +48,7 @@ const DisplayLogPage = ({ projectId }) => {
       console.error("Error creating daily log:", error);
     }
   };
-  
+
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -75,7 +75,7 @@ const DisplayLogPage = ({ projectId }) => {
       <Row></Row>
     </Container>
   );
-  
+
 };
 
 export default DisplayLogPage;

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Container, Button, Card, AspectRatio, Image, Text } from '@mantine/core';
-// import {
-//   Container,
-//   Card,
-//   Button,
-//   Row,
-//   Col
-// } from 'react-bootstrap';
+// import { Container, Button, Card, AspectRatio, Image, Text } from '@mantine/core';
+import {
+  Container,
+  Card,
+  Button,
+  Row,
+  Col
+} from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
 import { PROJECTS_QUERY } from '../utils/queries';
 // import ProjectItem from '../components/Projects/ProjectItem';
@@ -34,17 +34,33 @@ export default function ProjectPage () {
   if (error) return <p>Error: {error.message} and this message will show if i am on the project page</p>;
 
   return (
-    <div  className='project-container'>
-      <h1>Project Page</h1>
-      <ProjectList projects={data.project} handleEdit={handleEdit} />
-      <h2>{selectedProject ? 'Edit Project' : 'Create Project'}</h2>
-      {/* Render the ProjectForm component based on showForm state */}
-      {showForm ? (
-        <ProjectForm project={selectedProject} onFinished={handleFinish} />
-      ) : (
-        <button onClick={handleToggleForm}>Add Project</button>
-      )}
-    </div>
+    <Container className="project-container">
+      <Row>
+        <Col>
+          <h1>Project Page</h1>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <ProjectList projects={data.project} handleEdit={handleEdit} />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <h2>{selectedProject ? 'Edit Project' : 'Create Project'}</h2>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          {/* Render the ProjectForm component based on showForm state */}
+          {showForm ? (
+            <ProjectForm project={selectedProject} onFinished={handleFinish} />
+          ) : (
+            <Button onClick={handleToggleForm}>Add Project</Button>
+          )}
+        </Col>
+      </Row>
+    </Container>
   );
 
   
