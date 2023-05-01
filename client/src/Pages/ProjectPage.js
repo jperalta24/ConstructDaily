@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
-// import { Container, Button, Card, AspectRatio, Image, Text } from '@mantine/core';
 import {
   Container,
-  Card,
   Button,
   Row,
   Col
 } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
 import { PROJECTS_QUERY } from '../utils/queries';
-// import ProjectItem from '../components/Projects/ProjectItem';
 import {ProjectForm} from '../components/Projects';
 import ProjectList from '../components/Projects/ProjectList';
 

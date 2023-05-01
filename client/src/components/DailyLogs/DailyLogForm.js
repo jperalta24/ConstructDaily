@@ -1,63 +1,59 @@
-import React, { useState } from 'react';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import React, { useState } from "react";
+import { Form, Button, Container } from "react-bootstrap";
 
 const DailyLogForm = ({ onSubmit, project }) => {
   const [formData, setFormData] = useState({
-    date: '',
+    date: "",
     workCompleted: [
       {
-        taskDescription: '',
-        hoursWorked: '',
-        workerName: '',
+        taskDescription: "",
+        hoursWorked: "",
+        workerName: "",
       },
     ],
     materialsUsed: [
       {
-        materialName: '',
-        quantity: '',
+        materialName: "",
+        quantity: "",
       },
     ],
     equipmentUsed: [
       {
-        equipmentName: '',
-        hoursUsed: '',
+        equipmentName: "",
+        hoursUsed: "",
       },
     ],
     weather: [
       {
-        conditions: '',
-        temperature: '',
+        conditions: "",
+        temperature: "",
       },
     ],
     delays: [
       {
-        description: '',
-        duration: '',
+        description: "",
+        duration: "",
       },
     ],
     safetyIncidents: [
       {
-        description: '',
-        severity: '',
+        description: "",
+        severity: "",
       },
     ],
     communications: [
       {
-        messageContent: '',
-        messageType: '',
+        messageContent: "",
+        messageType: "",
       },
     ],
   });
 
-
   const handleSimpleChange = (e) => {
     const { name, value } = e.target;
-    console.log(value)
+    console.log(value);
     setFormData({ ...formData, [name]: value });
   };
-
-
-
 
   const handleChange = (e, index, fieldName) => {
     const { name, value } = e.target;
@@ -122,27 +118,21 @@ const DailyLogForm = ({ onSubmit, project }) => {
               type="text"
               name="taskDescription"
               value={work.taskDescription}
-              onChange={(e) =>
-                handleChange(e, index, 'workCompleted')
-              }
+              onChange={(e) => handleChange(e, index, "workCompleted")}
               placeholder="Work completed description"
             />
             <input
               type="number"
               name="hoursWorked"
               value={work.hoursWorked}
-              onChange={(e) =>
-                handleChange(e, index, 'workCompleted')
-              }
+              onChange={(e) => handleChange(e, index, "workCompleted")}
               placeholder="Work completed hours"
             />
             <input
               type="text"
               name="workerName"
               value={work.workerName}
-              onChange={(e) =>
-                handleChange(e, index, 'workCompleted')
-              }
+              onChange={(e) => handleChange(e, index, "workCompleted")}
               placeholder="Workers"
             />
           </div>
@@ -154,18 +144,14 @@ const DailyLogForm = ({ onSubmit, project }) => {
               type="text"
               name="materialName"
               value={material.materialName}
-              onChange={(e) =>
-                handleChange(e, index, 'materialsUsed')
-              }
+              onChange={(e) => handleChange(e, index, "materialsUsed")}
               placeholder="Material name"
             />
             <input
               type="number"
               name="quantity"
               value={material.quantity}
-              onChange={(e) =>
-                handleChange(e, index, 'materialsUsed')
-              }
+              onChange={(e) => handleChange(e, index, "materialsUsed")}
               placeholder="Material quantity"
             />
           </div>
@@ -177,14 +163,14 @@ const DailyLogForm = ({ onSubmit, project }) => {
               type="text"
               name="equipmentName"
               value={equipment.equipmentName}
-              onChange={(e) => handleChange(e, index, 'equipmentUsed')}
+              onChange={(e) => handleChange(e, index, "equipmentUsed")}
               placeholder="Equipment used"
             />
             <input
               type="number"
               name="hoursUsed"
               value={equipment.hoursUsed}
-              onChange={(e) => handleChange(e, index, 'equipmentUsed')}
+              onChange={(e) => handleChange(e, index, "equipmentUsed")}
               placeholder="Hours used"
             />
           </div>
@@ -196,14 +182,14 @@ const DailyLogForm = ({ onSubmit, project }) => {
               type="text"
               name="conditions"
               value={weather.conditions}
-              onChange={(e) => handleChange(e, index, 'weather')}
+              onChange={(e) => handleChange(e, index, "weather")}
               placeholder="Weather conditions"
             />
             <input
               type="number"
               name="temperature"
               value={weather.temperature}
-              onChange={(e) => handleChange(e, index, 'weather')}
+              onChange={(e) => handleChange(e, index, "weather")}
               placeholder="Temperature"
             />
           </div>
@@ -215,14 +201,14 @@ const DailyLogForm = ({ onSubmit, project }) => {
               type="text"
               name="description"
               value={delay.description}
-              onChange={(e) => handleChange(e, index, 'delays')}
+              onChange={(e) => handleChange(e, index, "delays")}
               placeholder="Delays"
             />
             <input
               type="number"
               name="duration"
               value={delay.duration}
-              onChange={(e) => handleChange(e, index, 'delays')}
+              onChange={(e) => handleChange(e, index, "delays")}
               placeholder="Duration"
             />
           </div>
@@ -234,14 +220,14 @@ const DailyLogForm = ({ onSubmit, project }) => {
               type="text"
               name="description"
               value={incident.description}
-              onChange={(e) => handleChange(e, index, 'safetyIncidents')}
+              onChange={(e) => handleChange(e, index, "safetyIncidents")}
               placeholder="Safety incident description"
             />
             <input
               type="text"
               name="severity"
               value={incident.severity}
-              onChange={(e) => handleChange(e, index, 'safetyIncidents')}
+              onChange={(e) => handleChange(e, index, "safetyIncidents")}
               placeholder="Safety incident severity"
             />
           </div>
@@ -253,18 +239,14 @@ const DailyLogForm = ({ onSubmit, project }) => {
               type="text"
               name="messageContent"
               value={communication.messageContent}
-              onChange={(e) =>
-                handleChange(e, index, 'communications')
-              }
+              onChange={(e) => handleChange(e, index, "communications")}
               placeholder="Message Content"
             />
             <input
               type="text"
               name="messageType"
               value={communication.messageType}
-              onChange={(e) =>
-                handleChange(e, index, 'communications')
-              }
+              onChange={(e) => handleChange(e, index, "communications")}
               placeholder="Message Type"
             />
           </div>
@@ -279,5 +261,3 @@ const DailyLogForm = ({ onSubmit, project }) => {
 };
 
 export default DailyLogForm;
-
-

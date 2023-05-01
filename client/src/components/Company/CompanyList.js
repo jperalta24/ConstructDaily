@@ -1,10 +1,10 @@
-import React from 'react';
-import CompanyItem from './CompanyItem';
+import React from "react";
+import CompanyItem from "./CompanyItem";
 
 function CompanyList({ companies }) {
   return (
     <div>
-      {companies.map(company => (
+      {companies.map((company) => (
         <CompanyItem key={company._id} company={company} />
       ))}
     </div>
@@ -12,4 +12,3 @@ function CompanyList({ companies }) {
 }
 
 export default CompanyList;
-

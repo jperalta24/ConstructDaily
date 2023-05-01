@@ -1,16 +1,14 @@
-const {
-  DailyLog,
-  Project,
-  User,
-} = require('../models')
-const { signToken } = require('../utils/auth');
+const { DailyLog, Project, User } = require("../models");
+const { signToken } = require("../utils/auth");
 
-const { AuthenticationError } = require('apollo-server-express');
+const { AuthenticationError } = require("apollo-server-express");
 const resolvers = {
   Query: {
     projects: async (_, args, context) => {
-      console.log("user")
-      const user = await User.findOne({_id: context.user._id}).populate("projects");
+      console.log("user");
+      const user = await User.findOne({ _id: context.user._id }).populate(
+        "projects"
+      );
       return user.projects;
     },
     project: async (_, { id }) => {
@@ -23,9 +21,11 @@ const resolvers = {
       return await User.findOne({ name }).populate("projects");
     },
     dailyLogs: async (_, { projectId }) => {
-      console.log('projectId:', projectId);
-      const logs = await DailyLog.find({ project: projectId }).populate('project');
-      console.log('logs:', logs); // Log the logs array
+      console.log("projectId:", projectId);
+      const logs = await DailyLog.find({ project: projectId }).populate(
+        "project"
+      );
+      console.log("logs:", logs); // Log the logs array
       return logs;
       // return await DailyLog.find({ project: projectId });
     },
@@ -33,7 +33,7 @@ const resolvers = {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate("projects");
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
   },
   // Add your mutation resolvers here
@@ -42,13 +42,13 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError('Incorrect email or password');
+        throw new AuthenticationError("Incorrect email or password");
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError('Incorrect email or password');
+        throw new AuthenticationError("Incorrect email or password");
       }
 
       const token = signToken(user);
@@ -63,10 +63,14 @@ const resolvers = {
       }
 
       // If something goes wrong during the user creation process, throw an error
-      throw new Error('Error creating user.');
+      throw new Error("Error creating user.");
     },
     updateUser: async (parent, { _id, name, email, role }) => {
-      const user = await User.findByIdAndUpdate(_id, { name, email, role }, { new: true });
+      const user = await User.findByIdAndUpdate(
+        _id,
+        { name, email, role },
+        { new: true }
+      );
       return user;
     },
     deleteUser: async (parent, { _id }) => {
@@ -77,7 +81,7 @@ const resolvers = {
       const user = await User.findById(userId);
 
       if (!user) {
-        throw new Error('User not found');
+        throw new Error("User not found");
       }
 
       const project = await Project.create({ name, userId });
@@ -87,7 +91,11 @@ const resolvers = {
       return project;
     },
     updateProject: async (parent, { _id, name }) => {
-      const project = await Project.findByIdAndUpdate(_id, { name }, { new: true });
+      const project = await Project.findByIdAndUpdate(
+        _id,
+        { name },
+        { new: true }
+      );
       return project;
     },
     deleteProject: async (parent, { _id }) => {
@@ -95,50 +103,106 @@ const resolvers = {
       return project;
     },
     addUserToProject: async (parent, { userId, projectId }) => {
-      const project = await Project.findByIdAndUpdate(projectId,
+      const project = await Project.findByIdAndUpdate(
+        projectId,
         { $addToSet: { users: userId } },
-        { new: true }).populate("users");
+        { new: true }
+      ).populate("users");
 
-      await User.findByIdAndUpdate(userId,
+      await User.findByIdAndUpdate(
+        userId,
         { $addToSet: { projects: projectId } },
-        { new: true });
+        { new: true }
+      );
 
       return project;
     },
     removeUserFromProject: async (parent, { userId, projectId }) => {
-      const project = await Project.findByIdAndUpdate(projectId,
+      const project = await Project.findByIdAndUpdate(
+        projectId,
         { $pull: { users: userId } },
-        { new: true }).populate("users");
+        { new: true }
+      ).populate("users");
 
-      await User.findByIdAndUpdate(userId,
+      await User.findByIdAndUpdate(
+        userId,
         { $pull: { projects: projectId } },
-        { new: true });
+        { new: true }
+      );
 
       return project;
     },
-    createDailyLog: async (parent, { projectId, date, workCompleted, materialsUsed, equipmentUsed, weather, delays, safetyIncidents, communications }) => {
-      const dailyLog = await DailyLog.create({ project: projectId, date, workCompleted, materialsUsed, equipmentUsed, weather, delays, safetyIncidents, communications });
-    
+    createDailyLog: async (
+      parent,
+      {
+        projectId,
+        date,
+        workCompleted,
+        materialsUsed,
+        equipmentUsed,
+        weather,
+        delays,
+        safetyIncidents,
+        communications,
+      }
+    ) => {
+      const dailyLog = await DailyLog.create({
+        project: projectId,
+        date,
+        workCompleted,
+        materialsUsed,
+        equipmentUsed,
+        weather,
+        delays,
+        safetyIncidents,
+        communications,
+      });
+
       console.log("Daily log created:", dailyLog);
-    
-      await Project.findByIdAndUpdate(projectId, { $push: { dailyLogs: dailyLog._id } });
-    
-      const project = await Project.findById(projectId).populate('dailyLogs');
+
+      await Project.findByIdAndUpdate(projectId, {
+        $push: { dailyLogs: dailyLog._id },
+      });
+
+      const project = await Project.findById(projectId).populate("dailyLogs");
       console.log("Updated project:", project);
-    
-      const populatedDailyLog = await DailyLog.findById(dailyLog._id).populate('project');
+
+      const populatedDailyLog = await DailyLog.findById(dailyLog._id).populate(
+        "project"
+      );
       console.log("Populated daily log:", populatedDailyLog);
-    
+
       return populatedDailyLog;
     },
-    
-    
-    
 
-
-
-    updateDailyLog: async (parent, { _id, date, workCompleted, materialsUsed, equipmentUsed, weather, delays, safetyIncidents, communications }) => {
-      const dailyLog = await DailyLog.findByIdAndUpdate(_id, { date, workCompleted, materialsUsed, equipmentUsed, weather, delays, safetyIncidents, communications }, { new: true });
+    updateDailyLog: async (
+      parent,
+      {
+        _id,
+        date,
+        workCompleted,
+        materialsUsed,
+        equipmentUsed,
+        weather,
+        delays,
+        safetyIncidents,
+        communications,
+      }
+    ) => {
+      const dailyLog = await DailyLog.findByIdAndUpdate(
+        _id,
+        {
+          date,
+          workCompleted,
+          materialsUsed,
+          equipmentUsed,
+          weather,
+          delays,
+          safetyIncidents,
+          communications,
+        },
+        { new: true }
+      );
       return dailyLog;
     },
 
@@ -147,8 +211,6 @@ const resolvers = {
       return dailyLog;
     },
   },
-
 };
 
 module.exports = resolvers;
-

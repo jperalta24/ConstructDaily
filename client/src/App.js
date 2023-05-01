@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import ProjectPage from "./pages/ProjectPage";
 import DailyLogPage from "./pages/DailyLogPage";
@@ -13,7 +13,6 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { Container, Row, Col, Navbar } from "react-bootstrap";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -38,22 +37,16 @@ const App = () => {
   return (
     <ApolloProvider client={client}>
       <Router>
-          <MyNav/>
-        {/* <Container> */}
-          {/* <Row>
-            <Col> */}
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/projects" element={<ProjectPage />} />
-                <Route path="/dailylog" element={<DailyLogPage />} />
-                <Route path="/login" element={<LoginForm />} />
-                <Route path="/profile" element={<UserProfile />} />
-                <Route path="/signup" element={<RegisterForm />} />
-              </Routes>
-            {/* </Col>
-          </Row> */}
-        {/* </Container> */}
-        <Footer/>
+        <MyNav />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/projects" element={<ProjectPage />} />
+          <Route path="/dailylog" element={<DailyLogPage />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/profile" element={<UserProfile />} />
+          <Route path="/signup" element={<RegisterForm />} />
+        </Routes>
+        <Footer />
       </Router>
     </ApolloProvider>
   );
