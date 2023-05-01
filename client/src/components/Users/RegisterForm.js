@@ -73,59 +73,10 @@ const RegisterForm = (props) => {
         />
       </Form.Group>
 
-      {/* <Form.Group className="mb-3" controlId="formBasicRole">
-
-        <Dropdown as={ButtonGroup} onChange={handleChange}>
-          <Button variant="success">Choose Role</Button>
-
-          <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
-
-          <Dropdown.Menu>
-            <Dropdown.Item value='admin'>Admin</Dropdown.Item>
-            <Dropdown.Item value='manager'>Manager</Dropdown.Item>
-            <Dropdown.Item value='worker'>Worker</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-
-      </Form.Group> */}
-
       <Button variant="primary" type="submit">
         Register
       </Button>
     </Form>
-    // <form onSubmit={handleSubmit}>
-    //   <input
-    //     type="text"
-    //     name="name"
-    //     value={formData.name}
-    //     onChange={handleChange}
-    //     placeholder="Name"
-    //     required
-    //   />
-    //   <input
-    //     type="email"
-    //     name="email"
-    //     value={formData.email}
-    //     onChange={handleChange}
-    //     placeholder="Email"
-    //     required
-    //   />
-    //   <input
-    //     type="password"
-    //     name="password"
-    //     value={formData.password}
-    //     onChange={handleChange}
-    //     placeholder="Password"
-    //     required
-    //   />
-    //   <select name="role" value={formData.role} onChange={handleChange} required>
-    //     <option value="">Select role</option>
-    //     <option value="admin">Admin</option>
-    //     <option value="manager">Manager</option>
-    //     <option value="worker">Worker</option>
-    //   </select>
-    //   <button type="submit">Register</button>
-    // </form>
   );
 };
 

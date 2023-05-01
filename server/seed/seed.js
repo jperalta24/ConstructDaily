@@ -68,11 +68,13 @@ const seed = async () => {
 
 seed();
 
-
 const mongoose = require("mongoose");
 const { User, Company, Project, DailyLog } = require("./models");
 
-mongoose.connect("mongodb://localhost/mydatabase", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb://localhost/mydatabase", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const users = [
   {
@@ -147,7 +149,9 @@ async function seed() {
   const savedProjects = await Project.insertMany(projects);
   const savedDailyLogs = await DailyLog.insertMany(dailyLogs);
 
-  console.log(`Seeded ${savedUsers.length} users, ${savedCompanies.length} companies, ${savedProjects.length} projects, and ${savedDailyLogs.length} daily logs.`);
+  console.log(
+    `Seeded ${savedUsers.length} users, ${savedCompanies.length} companies, ${savedProjects.length} projects, and ${savedDailyLogs.length} daily logs.`
+  );
   mongoose.connection.close();
 }
 

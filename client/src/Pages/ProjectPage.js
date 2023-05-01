@@ -7,7 +7,6 @@ import {
 } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
 import { PROJECTS_QUERY } from '../utils/queries';
-// import ProjectItem from '../components/Projects/ProjectItem';
 import {ProjectForm} from '../components/Projects';
 import ProjectList from '../components/Projects/ProjectList';
 

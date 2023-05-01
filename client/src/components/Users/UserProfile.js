@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-import { Container, Row, Col } from 'react-bootstrap';
+import React from "react";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { Container, Row, Col } from "react-bootstrap";
 
-import { QUERY_USER, QUERY_ME } from '../../utils/queries';
-import Auth from '../../utils/auth';
-import ProjectList from '../Projects/ProjectList';
+import { QUERY_USER, QUERY_ME } from "../../utils/queries";
+import Auth from "../../utils/auth";
+import ProjectList from "../Projects/ProjectList";
 
 const UserProfile = () => {
   const { name: userParam } = useParams();
@@ -14,7 +14,7 @@ const UserProfile = () => {
     variables: { name: userParam },
     onCompleted: (queryData) => {
       console.log("Query result:", queryData);
-    }
+    },
   });
 
   const user = data?.me || data?.user || {};
@@ -42,6 +42,5 @@ const UserProfile = () => {
     </Container>
   );
 };
-
 
 export default UserProfile;

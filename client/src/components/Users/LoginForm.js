@@ -6,29 +6,27 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
 const styles = {
   container: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
     padding: 20,
-    backgroundColor: 'white',
-    color: 'black',
+    backgroundColor: "white",
+    color: "black",
     maxWidth: 800,
-    margin: 'auto',
-    textAlign: 'center',
-    border: '1px solid gray',
+    margin: "auto",
+    textAlign: "center",
+    border: "1px solid gray",
     borderRadius: 10,
-    boxShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+    boxShadow: "2px 2px 4px rgba(0,0,0,0.3)",
     // media query for screens smaller than 768px
-    '@media (maxWidth: 768px)': {
-      flexDirection: 'column-reverse',
+    "@media (maxWidth: 768px)": {
+      flexDirection: "column-reverse",
     },
   },
-  // more styles here
 };
 
 const LoginForm = (props) => {
-  // const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [signIn] = useMutation(SIGN_IN);
@@ -52,7 +50,7 @@ const LoginForm = (props) => {
       <Row>
         <Col>
           <div className="login-page" style={styles.container}>
-            <Form className="my-4 mx-3" onSubmit={handleFormSubmit} >
+            <Form className="my-4 mx-3" onSubmit={handleFormSubmit}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label className="mt-3 mb-2">Email address</Form.Label>
                 <Form.Control

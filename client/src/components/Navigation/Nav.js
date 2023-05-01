@@ -2,7 +2,7 @@ import { useState } from "react";
 import Auth from "../../utils/auth";
 import { useLocation } from "react-router-dom";
 import { Button, Navbar, Nav, Container } from "react-bootstrap";
-import Logo from '../../images/ConstructDaily.png';
+import Logo from "../../images/ConstructDaily.png";
 
 function MyNav({ links }) {
   const location = useLocation();
@@ -30,34 +30,69 @@ function MyNav({ links }) {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <div className="d-flex justify-content-between" style={{ width: "100%" }}>
+          <div
+            className="d-flex justify-content-between"
+            style={{ width: "100%" }}
+          >
             <Nav className="justify-content-start">
               {/* Logo and other content */}
             </Nav>
             <Nav className="ms-auto">
               {Auth.loggedIn() ? (
                 <>
-                  <Button className='nav-btn' variant="custom" size="lg" href="/profile">
+                  <Button
+                    className="nav-btn"
+                    variant="custom"
+                    size="lg"
+                    href="/profile"
+                  >
                     Profile
                   </Button>
-                  <Button className='nav-btn' variant="custom" border="primary" size="lg" href="/">
+                  <Button
+                    className="nav-btn"
+                    variant="custom"
+                    border="primary"
+                    size="lg"
+                    href="/"
+                  >
                     Home Page
                   </Button>
-                  <Button className='nav-btn' variant="custom" size="lg" onClick={logout} href="#">
+                  <Button
+                    className="nav-btn"
+                    variant="custom"
+                    size="lg"
+                    onClick={logout}
+                    href="#"
+                  >
                     Logout
                   </Button>
                 </>
               ) : (
                 <>
                   {location.pathname !== "/" && (
-                    <Button className='nav-btn' variant="custom" size="lg" href="/">
+                    <Button
+                      className="nav-btn"
+                      variant="custom"
+                      size="lg"
+                      href="/"
+                    >
                       Home Page
                     </Button>
                   )}
-                  <Button className='nav-btn' variant="custom" size="lg" href="/signup">
+                  <Button
+                    className="nav-btn"
+                    variant="custom"
+                    size="lg"
+                    href="/signup"
+                  >
                     Signup
                   </Button>
-                  <Button className='nav-btn' variant="custom" size="lg" href="/login">
+                  <Button
+                    className="nav-btn"
+                    variant="custom"
+                    size="lg"
+                    href="/login"
+                  >
                     Login
                   </Button>
                 </>
@@ -71,4 +106,3 @@ function MyNav({ links }) {
 }
 
 export default MyNav;
-

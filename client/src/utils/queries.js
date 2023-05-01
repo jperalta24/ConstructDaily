@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const DAILY_LOGS_QUERY = gql`
   query GetDailyLogs($projectId: ID!) {
@@ -57,11 +57,11 @@ export const QUERY_USER = gql`
 `;
 
 export const PROJECTS_QUERY = gql`
- {
+  {
     projects {
       _id
       name
-      users{
+      users {
         _id
         name
       }
@@ -70,20 +70,16 @@ export const PROJECTS_QUERY = gql`
 `;
 
 export const QUERY_ME = gql`
-query GetMe {
-  me {
-    _id
-    name
-    email
-    role
+  query GetMe {
+    me {
+      _id
+      name
+      email
+      role
       projects {
         _id
         name
       }
     }
-}
+  }
 `;
-
-
-
-

@@ -16,7 +16,6 @@ const styles = {
       flexDirection: "column-reverse",
     },
   },
-  // more styles here
 };
 
 const HomePage = () => {
