@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-// import { Container, Button, Card, AspectRatio, Image, Text } from '@mantine/core';
 import {
   Container,
-  Card,
   Button,
   Row,
   Col

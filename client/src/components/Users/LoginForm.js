@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { SIGN_IN } from "../../utils/mutations";
 import AuthService from "../../utils/auth";
-import { Navigate } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
 const styles = {

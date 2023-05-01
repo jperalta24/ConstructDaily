@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Auth from "../../utils/auth";
-import { Link, useLocation } from "react-router-dom";
-import { Button, Navbar, Nav, ButtonGroup, ButtonToolbar, Container, Row, Col, Image } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
+import { Button, Navbar, Nav, Container } from "react-bootstrap";
 import Logo from '../../images/ConstructDaily.png';
 
 function MyNav({ links }) {

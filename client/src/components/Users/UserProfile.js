@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { Container, Row, Col } from 'react-bootstrap';
 

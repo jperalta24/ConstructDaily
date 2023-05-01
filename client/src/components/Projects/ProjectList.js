@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { PROJECTS_QUERY } from '../../utils/queries';
-import ProjectItem from './ProjectItem';
 import ProjectForm from './ProjectForm';
 import DisplayLogPage from '../../pages/DailyLogPage'; // Import DisplayLogPage
 import ProjectTable from './Test'
