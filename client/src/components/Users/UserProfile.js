@@ -35,7 +35,7 @@ const UserProfile = () => {
     <Container>
       <Row className="justify-content-center mb-3 profile-page">
         <Col xs={12} className="text-center p-3 mb-5">
-          <h2>{Auth.getProfile().data.name}'s Profile</h2>
+          <h2 className="page-name">{Auth.getProfile().data.name}'s Profile</h2>
         </Col>
       </Row>
       {user._id && <ProjectList userId={user._id} />}

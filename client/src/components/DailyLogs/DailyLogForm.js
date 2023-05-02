@@ -103,6 +103,7 @@ const DailyLogForm = ({ onSubmit, project }) => {
 
   return (
     <Container className="construction-theme-form mt-4">
+      
       <Form onSubmit={handleSubmit}>
         <input
           type="date"

@@ -183,6 +183,10 @@ a {
   color: var(--secondary-color);
 }
 
+.page-name{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 .scrollable-column {
   max-height: 60vh; /* Adjust the height as needed */
   overflow-y: auto;

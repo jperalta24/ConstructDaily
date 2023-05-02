@@ -45,7 +45,7 @@ const ProjectList = ({ userId }) => {
 
   return (
     <div>
-      <h2>Projects</h2>
+      <h2 className="page-name">Projects</h2>
       <ProjectTable
         data={data.projects}
         onDelete={handleDelete}
