@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { PROJECTS_QUERY } from "../../utils/queries";
 import ProjectForm from "./ProjectForm";
-import DisplayLogPage from "../../pages/DailyLogPage"; // Import DisplayLogPage
+import DisplayLogPage from "../../Pages/DailyLogPage"; // Import DisplayLogPage
 import ProjectTable from "./Test";
 import { useMutation } from "@apollo/client";
 import { DELETE_PROJECT } from "../../utils/mutations";
