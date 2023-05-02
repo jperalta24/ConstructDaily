@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
-import DailyLogForm from "../components/DailyLogs/DailyLogForm";
-import DailyLogList from "../components/DailyLogs/DailyLogList";
+import { DailyLogForm } from "../components/DailyLogs/DailyLogForm";
+import { DailyLogList } from "../components/DailyLogs/DailyLogList";
 import { DAILY_LOGS_QUERY } from "../utils/queries";
 import { CREATE_DAILYLOG } from "../utils/mutations";
 import { Container, Button, Row, Col } from "react-bootstrap";
