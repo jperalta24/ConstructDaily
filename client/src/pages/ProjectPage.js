@@ -7,8 +7,8 @@ import {
 } from "react-bootstrap";
 import { useQuery } from "@apollo/client";
 import { PROJECTS_QUERY } from "../utils/queries";
-import ProjectForm from "../components/Projects";
-import ProjectList from "../components/Projects/ProjectList";
+import ProjectForm from "../components/Projects/ProjectForm.js";
+import ProjectList from "../components/Projects/ProjectList.js";
 
 export default function ProjectPage () {
   const [selectedProject, setSelectedProject] = useState(null);
