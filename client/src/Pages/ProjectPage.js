@@ -7,7 +7,7 @@ import {
 } from "react-bootstrap";
 import { useQuery } from "@apollo/client";
 import { PROJECTS_QUERY } from "../utils/queries";
-import {ProjectForm} from "../components/Projects";
+import ProjectForm from "../components/Projects";
 import ProjectList from "../components/Projects/ProjectList";
 
 export default function ProjectPage () {
