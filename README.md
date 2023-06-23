@@ -1,6 +1,7 @@
-A good README should provide an overview of the project, its purpose, how to use it, and any dependencies or requirements. Here's an outline of what your README could include:
+
 
 # ConstructDaily
+Link: https://peaceful-refuge-36049.herokuapp.com/
 
 ## Description
 
